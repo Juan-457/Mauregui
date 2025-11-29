@@ -8,7 +8,7 @@
 
   <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="httpsfonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -63,6 +63,14 @@
 
     .navbar-left {
       flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 38px;
+      width: auto;
+      display: block;
     }
 
     .navbar-links {
@@ -258,7 +266,6 @@
       transition: transform 0.4s ease;
     }
 
-    /* 🔧 Ajuste para evitar espacios blancos: todas las slides con misma altura (16:9) */
     .carousel-item {
       min-width: 100%;
       box-sizing: border-box;
@@ -274,11 +281,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* rellena sin dejar bordes blancos, recorta si hace falta */
+      object-fit: cover;
       border-radius: 12px;
     }
 
-    /* 🔲 Recuadro sobre la imagen (overlay para texto) */
     .carousel-caption {
       position: absolute;
       left: 50%;
@@ -468,6 +474,10 @@
       .hero-content p {
         font-size: 1rem;
       }
+
+      .navbar-logo {
+        height: 32px;
+      }
     }
   </style>
 </head>
@@ -476,7 +486,9 @@
   <!-- ======================= NAVBAR ======================= -->
   <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-left"></div>
+      <div class="navbar-left">
+        <img src="mauregui-logo.png" alt="Mauregui Automotores" class="navbar-logo">
+      </div>
 
       <ul class="navbar-links" id="navbarLinks">
         <li><a href="#nosotros">Nosotros</a></li>
@@ -490,7 +502,6 @@
 
   <!-- ======================= HERO ROTATIVO CON FADE ======================= -->
   <section class="hero">
-    <!-- Dos videos superpuestos para el crossfade -->
     <video id="videoA" class="hero-video" autoplay muted playsinline></video>
     <video id="videoB" class="hero-video" autoplay muted playsinline></video>
 
@@ -512,8 +523,6 @@
     </p>
 
     <div class="nosotros-grid">
-      
-      <!-- ===== COLUMNA IZQUIERDA ===== -->
       <div class="nosotros-text">
         <p>
           En <strong>Mauregui Automotores</strong> somos una agencia 
@@ -537,11 +546,9 @@
         </ul>
       </div>
 
-      <!-- ===== COLUMNA DERECHA ===== -->
       <div class="nosotros-side">
         <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img">
 
-        <!-- Caja flotante -->
         <div class="nosotros-box">
           <h3>¿Por qué elegirnos?</h3>
           <p><strong>✔ Experiencia real:</strong> más de 15 años en el mercado automotor.</p>
@@ -600,9 +607,7 @@
 
           <button class="carousel-btn next" id="carouselNext">&#10095;</button>
 
-          <div class="carousel-dots" id="carouselDots">
-            <!-- Los puntos se llenan por JS -->
-          </div>
+          <div class="carousel-dots" id="carouselDots"></div>
         </div>
       </div>
     </section>
@@ -642,7 +647,6 @@
             <label for="mensaje">Consulta</label>
             <textarea id="mensaje" name="mensaje" placeholder="Contanos qué estás buscando o en qué te podemos ayudar"></textarea>
 
-            <!-- Acá podrías conectar con un backend, formspree, etc. -->
             <button type="button" class="btn-primary">Enviar consulta</button>
           </form>
         </div>
@@ -684,26 +688,22 @@
 
     // Estado inicial
     videoA.src = videos[index];
-    videoA.style.opacity = 1;  // visible
-    videoB.style.opacity = 0;  // oculto
+    videoA.style.opacity = 1;
+    videoB.style.opacity = 0;
 
     function rotate() {
       index = (index + 1) % videos.length;
 
       if (videoA.style.opacity === "1") {
-        // Cargar siguiente en B
         videoB.src = videos[index];
         videoB.play();
 
-        // Fade A → B
         videoA.style.opacity = 0;
         videoB.style.opacity = 1;
       } else {
-        // Cargar siguiente en A
         videoA.src = videos[index];
         videoA.play();
 
-        // Fade B → A
         videoA.style.opacity = 1;
         videoB.style.opacity = 0;
       }
@@ -755,7 +755,6 @@
 
     window.addEventListener('resize', updateCarousel);
 
-    // Auto-play opcional
     setInterval(() => {
       currentSlide = (currentSlide + 1) % items.length;
       updateCarousel();
@@ -763,3 +762,4 @@
   </script>
 </body>
 </html>
+
