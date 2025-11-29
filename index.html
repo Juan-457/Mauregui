@@ -1,3 +1,49 @@
+<!-- ======================= NAVBAR ======================= -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <span class="navbar-title">Mauregui Automotores</span>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    width: 100%;
+    background-color: #0051ff; /* Azul */
+    color: white;
+    padding: 12px 0;
+    position: fixed;       /* Siempre arriba */
+    top: 0;
+    left: 0;
+    z-index: 9999;         /* Encima del hero */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-title {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Ajuste para que el hero no quede tapado por la barra */
+  .hero {
+    margin-top: 65px;
+  }
+</style>
 <!-- ======================= HERO ROTATIVO CON FADE ======================= -->
 <section class="hero">
 
@@ -8,8 +54,7 @@
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1>Mauregui Automotores</h1>
-    <p>Un Vehículo para cada parte de tu vida.</p>
+    <p>Un Vehículo para cada momento de tu vida.</p>
   </div>
 </section>
 
