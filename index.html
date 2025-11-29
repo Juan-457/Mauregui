@@ -8,7 +8,7 @@
 
   <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="httpsfonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -258,15 +258,43 @@
       transition: transform 0.4s ease;
     }
 
+    /* 🔧 Ajuste para evitar espacios blancos: todas las slides con misma altura (16:9) */
     .carousel-item {
       min-width: 100%;
       box-sizing: border-box;
+      position: relative;
+      height: 0;
+      padding-top: 56.25%; /* 16:9 */
+      overflow: hidden;
     }
 
     .carousel-item img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      display: block;
+      height: 100%;
+      object-fit: cover; /* rellena sin dejar bordes blancos, recorta si hace falta */
       border-radius: 12px;
+    }
+
+    /* 🔲 Recuadro sobre la imagen (overlay para texto) */
+    .carousel-caption {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.65);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      max-width: 80%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .carousel-btn {
@@ -542,24 +570,31 @@
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-item">
               <img src="destacado1.png" alt="Destacado 1">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
               <img src="destacado2.png" alt="Destacado 2">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
               <img src="destacado3.png" alt="Destacado 3">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
               <img src="destacado4.png" alt="Destacado 4">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
               <img src="destacado5.png" alt="Destacado 5">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
               <img src="destacado6.png" alt="Destacado 6">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
               <img src="destacado7.png" alt="Destacado 7">
+              <div class="carousel-caption">Unidad destacada</div>
             </div>
           </div>
 
