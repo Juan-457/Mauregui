@@ -63,14 +63,6 @@
 
     .navbar-left {
       flex: 1;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-logo {
-      height: 38px;
-      width: auto;
-      display: block;
     }
 
     .navbar-links {
@@ -474,10 +466,6 @@
       .hero-content p {
         font-size: 1rem;
       }
-
-      .navbar-logo {
-        height: 32px;
-      }
     }
   </style>
 </head>
@@ -486,13 +474,12 @@
   <!-- ======================= NAVBAR ======================= -->
   <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-left">
-        <img src="mauregui-logo.png" alt="Mauregui Automotores" class="navbar-logo">
-      </div>
+      <div class="navbar-left"></div>
 
       <ul class="navbar-links" id="navbarLinks">
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#destacados">Destacados</a></li>
+        <li><a href="#financiacion">Financiación</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
 
@@ -513,55 +500,54 @@
   </section>
 
   <main>
-   <!-- ======================= NOSOTROS ======================= -->
-<section id="nosotros" class="section section-light">
-  <div class="section-inner">
-    <h2 class="section-title">Nosotros</h2>
-    <p class="section-subtitle">
-      Más de 15 años acompañando a nuestros clientes en la compra y venta de su vehículo,
-      con atención personalizada y un fuerte compromiso con la transparencia.
-    </p>
-
-    <div class="nosotros-grid">
-      <div class="nosotros-text">
-        <p>
-          En <strong>Mauregui Automotores</strong> somos una agencia 
-          <strong>multimarca</strong> especializada en vehículos 
-          <strong>0 km y usados seleccionados</strong>. Nuestro objetivo es que encuentres 
-          el auto ideal para cada etapa de tu vida.
+    <!-- ======================= NOSOTROS ======================= -->
+    <section id="nosotros" class="section section-light">
+      <div class="section-inner">
+        <h2 class="section-title">Nosotros</h2>
+        <p class="section-subtitle">
+          Más de 15 años acompañando a nuestros clientes en la compra y venta de su vehículo,
+          con atención personalizada y un fuerte compromiso con la transparencia.
         </p>
 
-        <p>
-          Nuestro equipo te asesora en todo el proceso: desde la elección del vehículo, 
-          la financiación y la documentación, hasta la entrega final. Trabajamos con seriedad 
-          y cercanía para que tu experiencia de compra sea segura y simple.
-        </p>
+        <div class="nosotros-grid">
+          <div class="nosotros-text">
+            <p>
+              En <strong>Mauregui Automotores</strong> somos una agencia 
+              <strong>multimarca</strong> especializada en vehículos 
+              <strong>0 km y usados seleccionados</strong>. Nuestro objetivo es que encuentres 
+              el auto ideal para cada etapa de tu vida.
+            </p>
 
-        <ul class="nosotros-list">
-          <li>Asesoramiento profesional en la elección de tu vehículo.</li>
-          <li>Créditos personalizados y planes de financiación.</li>
-          <li>Gestión completa de trámites y documentación.</li>
-          <li>Usados seleccionados con verificación previa.</li>
-          <li>Toma de usados en parte de pago.</li>
-        </ul>
-      </div>
+            <p>
+              Nuestro equipo te asesora en todo el proceso: desde la elección del vehículo, 
+              la financiación y la documentación, hasta la entrega final. Trabajamos con seriedad 
+              y cercanía para que tu experiencia de compra sea segura y simple.
+            </p>
 
-      <div class="nosotros-side">
-        <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img">
+            <ul class="nosotros-list">
+              <li>Asesoramiento profesional en la elección de tu vehículo.</li>
+              <li>Créditos personalizados y planes de financiación.</li>
+              <li>Gestión completa de trámites y documentación.</li>
+              <li>Usados seleccionados con verificación previa.</li>
+              <li>Toma de usados en parte de pago.</li>
+            </ul>
+          </div>
 
-        <div class="nosotros-box">
-          <h3>¿Por qué elegirnos?</h3>
-          <p><strong>✔ Experiencia real:</strong> más de 15 años en el mercado automotor.</p>
-          <p><strong>✔ Confianza:</strong> operaciones transparentes y asesoramiento claro.</p>
-          <p><strong>✔ Variedad:</strong> amplia gama de marcas, modelos y opciones de financiación.</p>
-          <p><strong>✔ Cercanía:</strong> atención personalizada para cada necesidad.</p>
+          <div class="nosotros-side">
+            <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img">
+
+            <div class="nosotros-box">
+              <h3>¿Por qué elegirnos?</h3>
+              <p><strong>✔ Experiencia real:</strong> más de 15 años en el mercado automotor.</p>
+              <p><strong>✔ Confianza:</strong> operaciones transparentes y asesoramiento claro.</p>
+              <p><strong>✔ Variedad:</strong> amplia gama de marcas, modelos y opciones de financiación.</p>
+              <p><strong>✔ Cercanía:</strong> atención personalizada para cada necesidad.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- ======================= DESTACADOS (CARRUSEL) ======================= -->
     <section id="destacados" class="section section-gray">
@@ -612,6 +598,7 @@
       </div>
     </section>
 
+    <!-- (opcional: más adelante podés crear un bloque con id="financiacion") -->
     <!-- ======================= CONTACTO ======================= -->
     <section id="contacto" class="section section-light">
       <div class="section-inner">
@@ -762,3 +749,4 @@
   </script>
 </body>
 </html>
+
