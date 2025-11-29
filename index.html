@@ -54,14 +54,12 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-
       display: flex;
       align-items: center;
       justify-content: center; /* centramos el grupo de links en escritorio */
       position: relative;
     }
 
-    /* 🔧 ya no ocupa espacio extra a la izquierda */
     .navbar-left {
       flex: 0;
     }
@@ -603,6 +601,115 @@
       </div>
     </section>
 
+    <!-- ===================  FINANCIACIÓN – TU AUTO EN CUOTAS ====================== -->
+    <section id="financiacion" class="section section-light" style="padding:60px 20px;">
+      <h2 style="text-align:center; font-size:38px; margin-bottom:10px; font-weight:700;">
+        🚗 Tu Auto en Cuotas
+      </h2>
+      <p style="text-align:center; font-size:18px; color:#666; margin-bottom:40px;">
+        Accedé a planes de crédito prendario, bancos, cheques y financiación flexible.
+      </p>
+
+      <div style="
+          display:flex;
+          flex-wrap:wrap;
+          justify-content:center;
+          gap:25px;
+          max-width:1100px;
+          margin:auto;
+      ">
+        <!-- Tarjeta 1 -->
+        <div style="
+            background:white;
+            padding:25px;
+            width:290px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        ">
+          <h3>Créditos Prendarios</h3>
+          <p>Financiación directa con tasa preferencial. Hasta 60 meses.</p>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div style="
+            background:white;
+            padding:25px;
+            width:290px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        ">
+          <h3>Crédito Santander</h3>
+          <p>Líneas especiales para autos nuevos y usados seleccionados.</p>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div style="
+            background:white;
+            padding:25px;
+            width:290px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        ">
+          <h3>Financiación con Cheques</h3>
+          <p>Planes para empresas, productores y autónomos.</p>
+        </div>
+
+        <!-- Tarjeta 4 -->
+        <div style="
+            background:white;
+            padding:25px;
+            width:290px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        ">
+          <h3>Planes a Medida</h3>
+          <p>Consultanos por opciones adaptadas a tu situación particular.</p>
+        </div>
+      </div>
+
+      <!-- ======================= COTIZADOR ======================= -->
+      <div style="margin-top:60px; max-width:700px; margin-left:auto; margin-right:auto;">
+
+        <h3 style="text-align:center; font-size:30px; margin-bottom:20px;">
+          🧮 Simulador de Crédito Prendario
+        </h3>
+
+        <!-- CONFIG TASA -->
+        <div style="background:#eef4ff; padding:20px; border-radius:12px; margin-bottom:25px;">
+          <strong>Tasa Nominal Anual (TNA):</strong> 
+          <input id="tna" type="number" value="19.90" step="0.01" style="width:90px; padding:5px;">
+          %  
+          &nbsp;&nbsp;&nbsp;
+          <strong>Plazo máximo:</strong> 
+          <input id="maxPlazo" type="number" value="60" style="width:70px; padding:5px;">
+          meses
+          <br>
+          <small style="color:#555;">
+            (Podés modificar estos valores cuando cambien las condiciones)
+          </small>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div style="background:white; padding:25px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.1);">
+          <label>Monto del préstamo</label>
+          <input id="monto" type="number" placeholder="Ej: 5000000" 
+            style="width:100%; padding:10px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
+
+          <label>Plazo (meses)</label>
+          <input id="meses" type="number" placeholder="Ej: 48" 
+            style="width:100%; padding:10px; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
+
+          <button onclick="calcularCuota()" 
+            style="width:100%; padding:12px; background:#005eff; color:white; border:none; border-radius:6px; font-size:18px; cursor:pointer;">
+            Calcular Cuota
+          </button>
+
+          <div id="resultado" style="margin-top:20px; font-size:1.2rem; font-weight:600; text-align:center;"></div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ======================= CONTACTO ======================= -->
     <section id="contacto" class="section section-light">
       <div class="section-inner">
@@ -750,6 +857,39 @@
       currentSlide = (currentSlide + 1) % items.length;
       updateCarousel();
     }, 8000);
+
+    // ========== COTIZADOR PRENDARIO ==========
+    function calcularCuota() {
+      const monto = parseFloat(document.getElementById('monto').value);
+      const meses = parseInt(document.getElementById('meses').value);
+      const tna = parseFloat(document.getElementById('tna').value);
+      const maxMeses = parseInt(document.getElementById('maxPlazo').value);
+
+      if (!monto || !meses) {
+        document.getElementById('resultado').innerHTML = "Ingresá monto y plazo válido.";
+        return;
+      }
+
+      if (meses > maxMeses) {
+        document.getElementById('resultado').innerHTML =
+          `El plazo máximo permitido es ${maxMeses} meses.`;
+        return;
+      }
+
+      // Convertimos TNA → TEM (tasa efectiva mensual aproximada)
+      const TEM = (Math.pow(1 + tna / 100, 1 / 12) - 1);
+
+      // Sistema francés
+      const tasa = TEM;
+      const cuota = monto * (tasa * Math.pow(1 + tasa, meses)) / (Math.pow(1 + tasa, meses) - 1);
+
+      const cuotaFormateada = cuota.toLocaleString('es-AR', { maximumFractionDigits: 0 });
+
+      document.getElementById('resultado').innerHTML =
+        `Cuota estimada: <strong>$ ${cuotaFormateada}</strong>`;
+    }
   </script>
+
 </body>
 </html>
+
