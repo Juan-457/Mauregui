@@ -1,165 +1,117 @@
 <!-- ======================= NAVBAR ======================= -->
 <nav class="navbar">
   <div class="navbar-container">
+
+    <!-- LOGO / MARCA -->
     <span class="navbar-title">Mauregui Automotores</span>
+
+    <!-- BOTÓN HAMBURGUESA MOBILE -->
+    <div class="navbar-toggle" id="navbarToggle">
+      ☰
+    </div>
+
+    <!-- MENÚ -->
+    <ul class="navbar-links" id="navbarLinks">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#ofertas">Ofertas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
   </div>
 </nav>
 
 <style>
   .navbar {
     width: 100%;
-    background-color: #0051ff; /* Azul */
+    background-color: #0051ff; 
     color: white;
     padding: 12px 0;
-    position: fixed;       /* Siempre arriba */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;         /* Encima del hero */
+    z-index: 9999;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   }
 
   .navbar-container {
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+
     display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
   .navbar-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
   }
 
+  /* ==== LINKS DESKTOP ==== */
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+
+  .navbar-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.2s;
+  }
+
+  .navbar-links li a:hover {
+    opacity: 0.7;
+  }
+
+  /* ==== HAMBURGUESA MOBILE ==== */
+  .navbar-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* ==== RESPONSIVE ==== */
   @media (max-width: 768px) {
-    .navbar-title {
-      font-size: 1.1rem;
+    .navbar-links {
+      position: absolute;
+      top: 58px;
+      right: 0;
+      width: 100%;
+      background: #0051ff;
+
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      padding: 15px 0;
+      gap: 15px;
+    }
+
+    .navbar-links li a {
+      font-size: 1.2rem;
+    }
+
+    .navbar-toggle {
+      display: block;
     }
   }
 
-  /* Ajuste para que el hero no quede tapado por la barra */
+  /* Ajuste para que no tape el hero */
   .hero {
     margin-top: 65px;
   }
 </style>
-<!-- ======================= HERO ROTATIVO CON FADE ======================= -->
-<section class="hero">
-
-  <!-- Dos videos superpuestos para hacer el crossfade -->
-  <video id="videoA" class="hero-video" autoplay muted playsinline></video>
-  <video id="videoB" class="hero-video" autoplay muted playsinline></video>
-
-  <div class="overlay"></div>
-
-  <div class="hero-content">
-    <p>Un Vehículo para cada momento de tu vida.</p>
-  </div>
-</section>
 
 <script>
-  const videos = [
-    "hero1.mp4",
-    "hero2.mp4",
-    "hero3.mp4",
-    "hero4.mp4",
-    "hero5.mp4"
-  ];
+  // ====== TOGGLE MENU MOBILE ======
+  const toggle = document.getElementById("navbarToggle");
+  const links = document.getElementById("navbarLinks");
 
-  let index = 0;
-  const duration = 7000; // 7 segundos por video
-  const videoA = document.getElementById("videoA");
-  const videoB = document.getElementById("videoB");
-
-  // Estado inicial
-  videoA.src = videos[index];
-  videoA.style.opacity = 1;  // visible
-  videoB.style.opacity = 0;  // oculto
-
-  function rotate() {
-    index = (index + 1) % videos.length;
-
-    if (videoA.style.opacity == "1") {
-      // Cargar siguiente en B
-      videoB.src = videos[index];
-      videoB.play();
-
-      // Fade A → B
-      videoA.style.opacity = 0;
-      videoB.style.opacity = 1;
-
-    } else {
-      // Cargar siguiente en A
-      videoA.src = videos[index];
-      videoA.play();
-
-      // Fade B → A
-      videoA.style.opacity = 1;
-      videoB.style.opacity = 0;
-    }
-  }
-
-  setInterval(rotate, duration);
+  toggle.addEventListener("click", () => {
+    links.style.display = links.style.display === "flex" ? "none" : "flex";
+  });
 </script>
 
-<style>
-  /* ===== HERO BASE ===== */
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 1s ease-in-out; /* Fade suave */
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-
-  .hero-content p {
-    font-size: 1.3rem;
-  }
-
-  @media (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2.2rem;
-    }
-    .hero-content p {
-      font-size: 1rem;
-    }
-  }
-</style>
