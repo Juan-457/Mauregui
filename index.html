@@ -57,12 +57,13 @@
 
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; /* centramos el grupo de links en escritorio */
       position: relative;
     }
 
+    /* 🔧 ya no ocupa espacio extra a la izquierda */
     .navbar-left {
-      flex: 1;
+      flex: 0;
     }
 
     .navbar-links {
@@ -439,7 +440,11 @@
 
     @media (max-width: 768px) {
       .navbar-container {
-        justify-content: space-between;
+        justify-content: space-between; /* en mobile: links a la izquierda, toggle a la derecha */
+      }
+
+      .navbar-left {
+        display: none; /* no lo usamos en mobile */
       }
 
       .navbar-links {
@@ -598,7 +603,6 @@
       </div>
     </section>
 
-    <!-- (opcional: más adelante podés crear un bloque con id="financiacion") -->
     <!-- ======================= CONTACTO ======================= -->
     <section id="contacto" class="section section-light">
       <div class="section-inner">
@@ -749,4 +753,3 @@
   </script>
 </body>
 </html>
-
