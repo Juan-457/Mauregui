@@ -420,6 +420,34 @@
       font-size: 0.85rem;
     }
 
+    /* ========= BURBUJA WHATSAPP ========= */
+    .whatsapp-bubble {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 10000;
+      text-decoration: none;
+    }
+
+    .whatsapp-bubble span {
+      font-size: 30px;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .whatsapp-bubble:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
     /* ======================= RESPONSIVE ======================= */
     @media (max-width: 992px) {
       .contact-grid {
@@ -602,9 +630,9 @@
 
     <!-- ===================  FINANCIACIÓN – TU AUTO EN CUOTAS ====================== -->
     <section id="financiacion" class="section section-light" style="padding:60px 20px;">
-     <h2 style="text-align:center; font-size:38px; margin-bottom:10px; font-weight:700;">
-  💳 Nuestra Financiación
-     </h2>
+      <h2 style="text-align:center; font-size:38px; margin-bottom:10px; font-weight:700;">
+        💳 Nuestra Financiación
+      </h2>
       <p style="text-align:center; font-size:18px; color:#666; margin-bottom:40px;">
         Accedé a planes de crédito prendario, bancos, cheques y financiación flexible.
       </p>
@@ -670,8 +698,8 @@
       <div style="margin-top:60px; max-width:700px; margin-left:auto; margin-right:auto;">
 
         <h3 style="text-align:center; font-size:30px; margin-bottom:20px;">
-  🚗 Tu Auto en Cuotas con nuestro prendario
-         </h3>
+          🚗 Tu Auto en Cuotas con nuestro prendario
+        </h3>
 
         <!-- CONFIG TASA -->
         <div style="background:#eef4ff; padding:20px; border-radius:12px; margin-bottom:25px;">
@@ -721,10 +749,10 @@
         <div class="contact-grid">
           <div class="contact-info">
             <p><strong>Dirección</strong><br>
-              Santiago Javier Petracchi 863,San Miguel del Monte, Provincia de Buenos Aires</p>
+              Santiago Javier Petracchi 863, San Miguel del Monte, Provincia de Buenos Aires</p>
 
             <p><strong>Teléfono / WhatsApp</strong><br>
-            +54 9 2226 52-2917</p>
+              +54 9 2226 52-2917</p>
 
             <p><strong>Email</strong><br>
               info@maureguiautomotores.com</p>
@@ -754,6 +782,14 @@
   <footer>
     © <span id="year"></span> Mauregui Automotores · Todos los derechos reservados.
   </footer>
+
+  <!-- BURBUJA WHATSAPP -->
+  <a href="https://wa.me/5492226522917"
+     class="whatsapp-bubble"
+     target="_blank"
+     aria-label="WhatsApp Mauregui Automotores">
+    <span>💬</span>
+  </a>
 
   <!-- ======================= SCRIPTS ======================= -->
   <script>
@@ -891,4 +927,3 @@
 
 </body>
 </html>
-
