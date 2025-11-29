@@ -1,17 +1,19 @@
-<!-- ======================= HERO ROTATIVO ======================= -->
+<!-- ======================= HERO ROTATIVO CON FADE ======================= -->
 <section class="hero">
-  <video id="heroVideo" autoplay muted playsinline></video>
+
+  <!-- Dos videos superpuestos para hacer el crossfade -->
+  <video id="videoA" class="hero-video" autoplay muted playsinline></video>
+  <video id="videoB" class="hero-video" autoplay muted playsinline></video>
 
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1>Agencia Mauregui</h1>
-    <p>Producción audiovisual y contenido creativo.</p>
+    <h1>Mauregui Automotores</h1>
+    <p>Un Vehículo para cada parte de tu vida.</p>
   </div>
 </section>
 
 <script>
-  // Array con tus 5 videos
   const videos = [
     "hero1.mp4",
     "hero2.mp4",
@@ -21,20 +23,39 @@
   ];
 
   let index = 0;
-  const heroVideo = document.getElementById("heroVideo");
+  const duration = 7000; // 7 segundos por video
+  const videoA = document.getElementById("videoA");
+  const videoB = document.getElementById("videoB");
 
-  // Cargar el primer video
-  heroVideo.src = videos[index];
+  // Estado inicial
+  videoA.src = videos[index];
+  videoA.style.opacity = 1;  // visible
+  videoB.style.opacity = 0;  // oculto
 
-  // Función para cambiar al siguiente video
-  function rotateVideo() {
+  function rotate() {
     index = (index + 1) % videos.length;
-    heroVideo.src = videos[index];
-    heroVideo.play();
+
+    if (videoA.style.opacity == "1") {
+      // Cargar siguiente en B
+      videoB.src = videos[index];
+      videoB.play();
+
+      // Fade A → B
+      videoA.style.opacity = 0;
+      videoB.style.opacity = 1;
+
+    } else {
+      // Cargar siguiente en A
+      videoA.src = videos[index];
+      videoA.play();
+
+      // Fade B → A
+      videoA.style.opacity = 1;
+      videoB.style.opacity = 0;
+    }
   }
 
-  // Cambiar cada 7 segundos
-  setInterval(rotateVideo, 7000);
+  setInterval(rotate, duration);
 </script>
 
 <style>
@@ -46,13 +67,14 @@
     overflow: hidden;
   }
 
-  .hero video {
+  .hero-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 1s ease-in-out; /* Fade suave */
   }
 
   .overlay {
@@ -62,6 +84,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
   }
 
   .hero-content {
