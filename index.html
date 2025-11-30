@@ -428,6 +428,24 @@
       font-size: 0.85rem;
     }
 
+    .footer-designed {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .footer-designed span {
+      color: #dddddd;
+    }
+
+    .footer-logo {
+      height: 24px;
+      width: auto;
+      display: block;
+    }
+
     /* ========= BURBUJA WHATSAPP ========= */
     .whatsapp-bubble {
       position: fixed;
@@ -770,7 +788,7 @@
               Sábados – 9:00 a 13:00</p>
           </div>
 
-          <form class="contact-form">
+          <form class="contact-form" id="contactForm">
             <label for="nombre">Nombre</label>
             <input id="nombre" type="text" name="nombre" placeholder="Tu nombre completo">
 
@@ -780,7 +798,7 @@
             <label for="mensaje">Consulta</label>
             <textarea id="mensaje" name="mensaje" placeholder="Contanos qué estás buscando o en qué te podemos ayudar"></textarea>
 
-            <button type="button" class="btn-primary">Enviar consulta</button>
+            <button type="button" class="btn-primary" id="contactSubmit">Enviar consulta</button>
           </form>
         </div>
       </div>
@@ -789,6 +807,10 @@
 
   <footer>
     © <span id="year"></span> Mauregui Automotores · Todos los derechos reservados.
+    <div class="footer-designed">
+      <span>Diseñado por</span>
+      <img src="umanoai (1).png" alt="UmanoAI" class="footer-logo">
+    </div>
   </footer>
 
   <!-- BURBUJA WHATSAPP -->
@@ -928,7 +950,58 @@
       document.getElementById('resultado').innerHTML =
         `Cuota estimada: <strong>$ ${cuotaFormateada}</strong>`;
     }
+
+    // ========== FORMULARIO CONTACTO → JSON A UNA URL ==========
+    // Reemplazá esta URL por tu endpoint real (n8n, Power Automate, API, etc.)
+    const CONTACT_ENDPOINT = "https://tu-endpoint.com/contacto";
+
+    const contactForm = document.getElementById('contactForm');
+    const contactSubmit = document.getElementById('contactSubmit');
+
+    contactSubmit.addEventListener('click', async () => {
+      const nombre = document.getElementById('nombre').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+
+      if (!nombre || !telefono || !mensaje) {
+        alert('Completá nombre, teléfono y consulta.');
+        return;
+      }
+
+      const payload = {
+        nombre,
+        telefono,
+        mensaje,
+        origen: 'web_mauregui',
+        fecha: new Date().toISOString()
+      };
+
+      try {
+        contactSubmit.disabled = true;
+        contactSubmit.textContent = 'Enviando...';
+
+        const res = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error('Error HTTP ' + res.status);
+        }
+
+        alert('¡Gracias! Recibimos tu consulta y te vamos a contactar a la brevedad.');
+        contactForm.reset();
+      } catch (err) {
+        console.error(err);
+        alert('Ocurrió un problema al enviar la consulta. Probá nuevamente o escribinos por WhatsApp.');
+      } finally {
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = 'Enviar consulta';
+      }
+    });
   </script>
 
 </body>
 </html>
+
