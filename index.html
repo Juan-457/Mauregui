@@ -19,6 +19,10 @@
       --bg-gray: #f5f5f5;
       --text-main: #222222;
       --text-muted: #555555;
+      /* Colores del degradé de secciones */
+      --section-grad-start: #f0f6ff;
+      --section-grad-mid: #dce9ff;
+      --section-grad-end: #ffffff;
     }
 
     * {
@@ -168,12 +172,15 @@
       margin: 0 auto 40px;
     }
 
-    .section-light {
-      background: var(--bg-light);
-    }
-
+    /* Ahora todas las secciones “claras” y “grises” usan un degradé suave */
+    .section-light,
     .section-gray {
-      background: var(--bg-gray);
+      background: linear-gradient(
+        to bottom,
+        var(--section-grad-start) 0%,
+        var(--section-grad-mid) 50%,
+        var(--section-grad-end) 100%
+      );
     }
 
     /* ======================= NOSOTROS ======================= */
@@ -925,4 +932,3 @@
 
 </body>
 </html>
-
