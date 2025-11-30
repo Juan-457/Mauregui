@@ -34,7 +34,7 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text-main);
-      /* 🔹 Fondo con tu imagen */
+      /* Fondo con tu imagen */
       background: var(--bg-light) url('fondo.png') center center / cover fixed no-repeat;
     }
 
@@ -57,7 +57,7 @@
       padding: 0 20px;
       display: flex;
       align-items: center;
-      justify-content: center; /* centramos el grupo de links en escritorio */
+      justify-content: center;
       position: relative;
     }
 
@@ -97,7 +97,7 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      margin-top: 65px; /* para que no lo tape la navbar */
+      margin-top: 65px;
     }
 
     .hero-video {
@@ -263,7 +263,7 @@
       box-sizing: border-box;
       position: relative;
       height: 0;
-      padding-top: 56.25%; /* 16:9 */
+      padding-top: 56.25%;
       overflow: hidden;
     }
 
@@ -438,10 +438,10 @@
       text-decoration: none;
     }
 
-    .whatsapp-bubble span {
-      font-size: 30px;
-      color: #ffffff;
-      line-height: 1;
+    .whatsapp-bubble svg {
+      width: 32px;
+      height: 32px;
+      fill: #ffffff;
     }
 
     .whatsapp-bubble:hover {
@@ -467,11 +467,11 @@
 
     @media (max-width: 768px) {
       .navbar-container {
-        justify-content: space-between; /* en mobile: links a la izquierda, toggle a la derecha */
+        justify-content: space-between;
       }
 
       .navbar-left {
-        display: none; /* no lo usamos en mobile */
+        display: none;
       }
 
       .navbar-links {
@@ -789,7 +789,10 @@
      class="whatsapp-bubble"
      target="_blank"
      aria-label="WhatsApp Mauregui Automotores">
-    <span>💬</span>
+    <!-- Icono tipo WhatsApp en SVG -->
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 3C9.383 3 4 8.149 4 14.5c0 2.55.86 4.91 2.34 6.83L5 27l5.86-1.2A12.6 12.6 0 0 0 16 26c6.617 0 12-5.149 12-11.5S22.617 3 16 3zm0 2c5.523 0 10 4.29 10 9.5S21.523 24 16 24a10.6 10.6 0 0 1-4.7-1.1l-.34-.17-3.48.71.72-3.26-.22-.33A7.87 7.87 0 0 1 6 14.5C6 9.29 10.477 5 16 5zm-3.07 4.5c-.25-.01-.52.01-.81.08-.42.11-.96.49-1.1.96-.28.9-.72 2.78.86 4.82 1.57 2.03 3.38 2.9 4.34 3.26.45.17 1.01.13 1.35.08.41-.06 1.25-.51 1.43-1.01.18-.49.18-.9.13-.98-.06-.08-.2-.13-.42-.24-.23-.11-1.36-.67-1.57-.75-.21-.08-.36-.11-.51.11-.15.22-.59.75-.72.91-.13.15-.27.17-.5.06-.23-.11-.96-.36-1.83-1.16-.68-.61-1.14-1.37-1.27-1.6-.13-.23-.01-.35.1-.46.1-.1.23-.27.34-.4.11-.13.15-.22.23-.37.08-.15.05-.28-.01-.4-.06-.11-.53-1.29-.73-1.76-.18-.44-.37-.45-.53-.46z"/>
+    </svg>
   </a>
 
   <!-- ======================= SCRIPTS ======================= -->
@@ -816,11 +819,10 @@
     ];
 
     let index = 0;
-    const duration = 7000; // 7 segundos por video
+    const duration = 7000;
     const videoA = document.getElementById("videoA");
     const videoB = document.getElementById("videoB");
 
-    // Estado inicial
     videoA.src = videos[index];
     videoA.style.opacity = 1;
     videoB.style.opacity = 0;
@@ -854,7 +856,6 @@
 
     let currentSlide = 0;
 
-    // Crear puntos
     items.forEach((_, i) => {
       const dot = document.createElement('div');
       dot.classList.add('carousel-dot');
@@ -912,13 +913,9 @@
         return;
       }
 
-      // Convertimos TNA → TEM (tasa efectiva mensual aproximada)
       const TEM = (Math.pow(1 + tna / 100, 1 / 12) - 1);
-
-      // Sistema francés
       const tasa = TEM;
       const cuota = monto * (tasa * Math.pow(1 + tasa, meses)) / (Math.pow(1 + tasa, meses) - 1);
-
       const cuotaFormateada = cuota.toLocaleString('es-AR', { maximumFractionDigits: 0 });
 
       document.getElementById('resultado').innerHTML =
@@ -928,3 +925,4 @@
 
 </body>
 </html>
+
