@@ -353,7 +353,131 @@
       background: #ffffff;
     }
 
-    /* ======================= CONTACTO ======================= */
+    /* ======================= CARRUSEL FINANCIACIÓN ======================= */
+    .finan-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .finan-carousel {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 35px auto;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+    }
+
+    .finan-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .finan-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 28px 24px 30px 24px;
+      text-align: center;
+    }
+
+    .finan-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .finan-item p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .finan-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.55);
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      z-index: 2;
+    }
+
+    .finan-btn:hover {
+      background: rgba(0, 0, 0, 0.75);
+    }
+
+    .finan-btn.prev {
+      left: 10px;
+    }
+
+    .finan-btn.next {
+      right: 10px;
+    }
+
+    .finan-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .finan-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.18);
+      cursor: pointer;
+    }
+
+    .finan-dot.active {
+      background: var(--primary);
+    }
+
+    .finan-online-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-cotizador {
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .finan-online-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ======================= CONTACTO / BUSCAR AUTO ======================= */
     .contact-grid {
       display: grid;
       grid-template-columns: 1.2fr 1.3fr;
@@ -401,22 +525,58 @@
       resize: vertical;
     }
 
-    .btn-primary {
-      display: inline-block;
-      border: none;
-      background: var(--primary);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 999px;
-      font-size: 0.98rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
+    /* Mini hero de la sección "tu futuro auto" */
+    .contact-hero {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 32px;
+      height: 260px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
+    .contact-hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .contact-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.25)
+      );
+    }
+
+    .contact-hero-text {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 26px;
+      max-width: 520px;
+    }
+
+    .contact-hero-text h2 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-hero-text p {
+      font-size: 0.98rem;
+      color: #f0f0f0;
     }
 
     /* ======================= FOOTER ======================= */
@@ -523,6 +683,14 @@
       .hero-content p {
         font-size: 1rem;
       }
+
+      .contact-hero {
+        height: 220px;
+      }
+
+      .contact-hero-text h2 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
@@ -537,7 +705,7 @@
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#destacados">Destacados</a></li>
         <li><a href="#financiacion">Financiación</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto">Tu futuro auto</a></li>
       </ul>
 
       <div class="navbar-toggle" id="navbarToggle">☰</div>
@@ -552,6 +720,7 @@
     <div class="overlay"></div>
 
     <div class="hero-content">
+      <!-- Podés sumar textos acá si querés -->
     </div>
   </section>
 
@@ -654,123 +823,72 @@
       </div>
     </section>
 
-    <!-- ===================  FINANCIACIÓN – TU AUTO EN CUOTAS ====================== -->
-    <section id="financiacion" class="section section-light" style="padding:60px 20px;">
-      <h2 style="text-align:center; font-size:38px; margin-bottom:10px; font-weight:700;">
-        💳 Nuestra Financiación
-      </h2>
-      <p style="text-align:center; font-size:18px; color:#666; margin-bottom:40px;">
-        Accedé a planes de crédito prendario, bancos, cheques y financiación flexible.
-      </p>
+    <!-- ===================  FINANCIACIÓN – CARRUSEL ====================== -->
+    <section id="financiacion" class="section section-light">
+      <div class="section-inner finan-wrapper">
+        <h2 class="section-title">💳 Nuestra Financiación</h2>
+        <p class="section-subtitle">
+          Trabajamos con varias alternativas de crédito para que puedas financiar tu auto.  
+          En la web te mostramos las opciones generales y los detalles los vemos juntos en la agencia.
+        </p>
 
-      <div style="
-          display:flex;
-          flex-wrap:wrap;
-          justify-content:center;
-          gap:25px;
-          max-width:1100px;
-          margin:auto;
-      ">
-        <!-- Tarjeta 1 -->
-        <div style="
-            background:white;
-            padding:25px;
-            width:290px;
-            border-radius:12px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-          <h3>Créditos Prendarios</h3>
-          <p>Financiación directa con tasa preferencial. Hasta 60 meses.</p>
+        <!-- CARRUSEL DE FINANCIACIÓN -->
+        <div class="finan-carousel">
+          <button class="finan-btn prev" id="finanPrev">&#10094;</button>
+
+          <div class="finan-track" id="finanTrack">
+            <div class="finan-item">
+              <h3>Créditos Prendarios</h3>
+              <p>Financiación clásica sobre el vehículo. Consultá montos y plazos en la agencia.</p>
+            </div>
+            <div class="finan-item">
+              <h3>Crédito Santander</h3>
+              <p>Líneas especiales para 0 km y usados seleccionados. Condiciones vigentes en salón.</p>
+            </div>
+            <div class="finan-item">
+              <h3>Financiación con Cheques</h3>
+              <p>Alternativa para empresas, productores y autónomos. Armamos el plan a medida.</p>
+            </div>
+            <div class="finan-item">
+              <h3>Planes a Medida</h3>
+              <p>Combinamos distintas opciones para adaptarnos a tu situación puntual.</p>
+            </div>
+          </div>
+
+          <button class="finan-btn next" id="finanNext">&#10095;</button>
         </div>
 
-        <!-- Tarjeta 2 -->
-        <div style="
-            background:white;
-            padding:25px;
-            width:290px;
-            border-radius:12px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-          <h3>Crédito Santander</h3>
-          <p>Líneas especiales para autos nuevos y usados seleccionados.</p>
+        <div class="finan-dots" id="finanDots"></div>
+
+        <!-- LINK LLAMATIVO AL COTIZADOR EXTERNO -->
+        <div class="finan-online-link">
+          <a href="https://www.cotizadorcreditcar.com.ar" target="_blank" class="btn-primary btn-cotizador">
+            🚗 Tu auto en cuotas online
+          </a>
+          <p class="finan-online-note">
+            Abrimos un cotizador externo para que veas una referencia de cuotas.  
+            Los planes finales se confirman siempre en Mauregui Automotores.
+          </p>
         </div>
-
-        <!-- Tarjeta 3 -->
-        <div style="
-            background:white;
-            padding:25px;
-            width:290px;
-            border-radius:12px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-          <h3>Financiación con Cheques</h3>
-          <p>Planes para empresas, productores y autónomos.</p>
-        </div>
-
-        <!-- Tarjeta 4 -->
-        <div style="
-            background:white;
-            padding:25px;
-            width:290px;
-            border-radius:12px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-          <h3>Planes a Medida</h3>
-          <p>Consultanos por opciones adaptadas a tu situación particular.</p>
-        </div>
-      </div>
-
-      <!-- ======================= COTIZADOR ======================= -->
-      <div style="margin-top:60px; max-width:700px; margin-left:auto; margin-right:auto;">
-
-        <h3 style="text-align:center; font-size:30px; margin-bottom:20px;">
-          🚗 Tu Auto en Cuotas con nuestro prendario
-        </h3>
-
-        <!-- CONFIG TASA -->
-        <div style="background:#eef4ff; padding:20px; border-radius:12px; margin-bottom:25px;">
-          <strong>Tasa Nominal Anual (TNA):</strong> 
-          <input id="tna" type="number" value="19.90" step="0.01" style="width:90px; padding:5px;">
-          %  
-          &nbsp;&nbsp;&nbsp;
-          <strong>Plazo máximo:</strong> 
-          <input id="maxPlazo" type="number" value="60" style="width:70px; padding:5px;">
-          meses
-          <br>
-          <small style="color:#555;">
-            (Podés modificar estos valores cuando cambien las condiciones)
-          </small>
-        </div>
-
-        <!-- FORMULARIO -->
-        <div style="background:white; padding:25px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.1);">
-          <label>Monto del préstamo</label>
-          <input id="monto" type="number" placeholder="Ej: 5000000" 
-            style="width:100%; padding:10px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
-
-          <label>Plazo (meses)</label>
-          <input id="meses" type="number" placeholder="Ej: 48" 
-            style="width:100%; padding:10px; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
-
-          <button onclick="calcularCuota()" 
-            style="width:100%; padding:12px; background:#005eff; color:white; border:none; border-radius:6px; font-size:18px; cursor:pointer;">
-            Calcular Cuota
-          </button>
-
-          <div id="resultado" style="margin-top:20px; font-size:1.2rem; font-weight:600; text-align:center;"></div>
-        </div>
-
       </div>
     </section>
 
-    <!-- ======================= CONTACTO ======================= -->
+    <!-- ======================= CONTACTO / BUSCAR TU FUTURO AUTO ======================= -->
     <section id="contacto" class="section section-light">
       <div class="section-inner">
-        <h2 class="section-title">Contacto</h2>
-        <p class="section-subtitle">
-          ¿Querés ver una unidad, consultar por financiación o tasar tu usado? 
-          Escribinos y nos pondremos en contacto a la brevedad.
-        </p>
+
+        <!-- MINI HERO CON hero6.mp4 -->
+        <div class="contact-hero">
+          <video src="hero6.mp4" class="contact-hero-video" autoplay muted loop playsinline></video>
+          <div class="contact-hero-overlay"></div>
+          <div class="contact-hero-text">
+            <h2>¿Querés que te busquemos tu futuro auto?</h2>
+            <p>
+              Contanos qué estás buscando y un especialista de Mauregui Automotores 
+              te va a contactar para ayudarte a encontrar la mejor opción.
+            </p>
+          </div>
+        </div>
 
         <div class="contact-grid">
           <div class="contact-info">
@@ -786,19 +904,32 @@
             <p><strong>Horarios</strong><br>
               Lunes a Viernes – 9:00 a 18:00<br>
               Sábados – 9:00 a 13:00</p>
+
+            <p style="margin-top:12px; font-weight:500;">
+              Completá el formulario y luego un especialista te contactará para asesorarte.
+            </p>
           </div>
 
           <form class="contact-form" id="contactForm">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" name="nombre" placeholder="Tu nombre completo">
+            <label for="marca">Marca</label>
+            <input id="marca" type="text" name="marca" placeholder="Ej: Toyota, Volkswagen, Chevrolet">
+
+            <label for="modelo">Modelo</label>
+            <input id="modelo" type="text" name="modelo" placeholder="Ej: Corolla XEi, Amarok, Onix">
+
+            <label for="anio">Año</label>
+            <input id="anio" type="number" name="anio" placeholder="Ej: 2018">
+
+            <label for="valorEstimado">Valor estimado</label>
+            <input id="valorEstimado" type="number" name="valorEstimado" placeholder="Presupuesto aproximado o valor de tu usado">
 
             <label for="telefono">Teléfono</label>
             <input id="telefono" type="tel" name="telefono" placeholder="Tu número de contacto">
 
-            <label for="mensaje">Consulta</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Contanos qué estás buscando o en qué te podemos ayudar"></textarea>
+            <label for="comentarios">Comentarios</label>
+            <textarea id="comentarios" name="comentarios" placeholder="Contanos si tenés alguna preferencia: tipo de uso, combustible, caja, etc."></textarea>
 
-            <button type="button" class="btn-primary" id="contactSubmit">Enviar consulta</button>
+            <button type="button" class="btn-primary" id="contactSubmit">Quiero que me contacten</button>
           </form>
         </div>
       </div>
@@ -929,55 +1060,76 @@
       updateCarousel();
     }, 8000);
 
-    // ========== COTIZADOR PRENDARIO ==========
-    function calcularCuota() {
-      const monto = parseFloat(document.getElementById('monto').value);
-      const meses = parseInt(document.getElementById('meses').value);
-      const tna = parseFloat(document.getElementById('tna').value);
-      const maxMeses = parseInt(document.getElementById('maxPlazo').value);
+    // ========== CARRUSEL FINANCIACIÓN ==========
+    const finanTrack = document.getElementById('finanTrack');
+    const finanItems = document.querySelectorAll('.finan-item');
+    const finanPrev = document.getElementById('finanPrev');
+    const finanNext = document.getElementById('finanNext');
+    const finanDotsContainer = document.getElementById('finanDots');
 
-      if (!monto || !meses) {
-        document.getElementById('resultado').innerHTML = "Ingresá monto y plazo válido.";
-        return;
-      }
+    let finanCurrent = 0;
 
-      if (meses > maxMeses) {
-        document.getElementById('resultado').innerHTML =
-          `El plazo máximo permitido es ${maxMeses} meses.`;
-        return;
-      }
+    finanItems.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('finan-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        finanCurrent = i;
+        updateFinanCarousel();
+      });
+      finanDotsContainer.appendChild(dot);
+    });
 
-      const TEM = (Math.pow(1 + tna / 100, 1 / 12) - 1);
-      const tasa = TEM;
-      const cuota = monto * (tasa * Math.pow(1 + tasa, meses)) / (Math.pow(1 + tasa, meses) - 1);
-      const cuotaFormateada = cuota.toLocaleString('es-AR', { maximumFractionDigits: 0 });
+    const finanDots = document.querySelectorAll('.finan-dot');
 
-      document.getElementById('resultado').innerHTML =
-        `Cuota estimada: <strong>$ ${cuotaFormateada}</strong>`;
+    function updateFinanCarousel() {
+      const width = finanItems[0].clientWidth;
+      finanTrack.style.transform = `translateX(-${finanCurrent * width}px)`;
+
+      finanDots.forEach((d, i) => {
+        d.classList.toggle('active', i === finanCurrent);
+      });
     }
 
-    // ========== FORMULARIO CONTACTO → JSON A UNA URL ==========
-    // Reemplazá esta URL por tu endpoint real (n8n, Power Automate, API, etc.)
+    finanPrev.addEventListener('click', () => {
+      finanCurrent = (finanCurrent - 1 + finanItems.length) % finanItems.length;
+      updateFinanCarousel();
+    });
+
+    finanNext.addEventListener('click', () => {
+      finanCurrent = (finanCurrent + 1) % finanItems.length;
+      updateFinanCarousel();
+    });
+
+    window.addEventListener('resize', updateFinanCarousel);
+
+    // ========== FORMULARIO "TU FUTURO AUTO" → JSON A UNA URL ==========
     const CONTACT_ENDPOINT = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f0637f326ee14691a60251bb3dd00978/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=7DaHMaLcyJtwzzX_Id0YN5TGMliWRBlLNBAuD9CFd6I";
 
     const contactForm = document.getElementById('contactForm');
     const contactSubmit = document.getElementById('contactSubmit');
 
     contactSubmit.addEventListener('click', async () => {
-      const nombre = document.getElementById('nombre').value.trim();
+      const marca = document.getElementById('marca').value.trim();
+      const modelo = document.getElementById('modelo').value.trim();
+      const anio = document.getElementById('anio').value.trim();
+      const valorEstimado = document.getElementById('valorEstimado').value.trim();
       const telefono = document.getElementById('telefono').value.trim();
-      const mensaje = document.getElementById('mensaje').value.trim();
+      const comentarios = document.getElementById('comentarios').value.trim();
 
-      if (!nombre || !telefono || !mensaje) {
-        alert('Completá nombre, teléfono y consulta.');
+      if (!marca || !modelo || !telefono) {
+        alert('Completá al menos Marca, Modelo y Teléfono para que podamos ayudarte.');
         return;
       }
 
       const payload = {
-        nombre,
+        marca,
+        modelo,
+        anio,
+        valorEstimado,
         telefono,
-        mensaje,
-        origen: 'web_mauregui',
+        comentarios,
+        origen: 'web_mauregui_busqueda_auto',
         fecha: new Date().toISOString()
       };
 
@@ -995,18 +1147,17 @@
           throw new Error('Error HTTP ' + res.status);
         }
 
-        alert('¡Gracias! Recibimos tu consulta y te vamos a contactar a la brevedad.');
+        alert('¡Gracias! Recibimos tu búsqueda y un especialista te va a contactar a la brevedad.');
         contactForm.reset();
       } catch (err) {
         console.error(err);
-        alert('Ocurrió un problema al enviar la consulta. Probá nuevamente o escribinos por WhatsApp.');
+        alert('Ocurrió un problema al enviar la solicitud. Probá nuevamente o escribinos por WhatsApp.');
       } finally {
         contactSubmit.disabled = false;
-        contactSubmit.textContent = 'Enviar consulta';
+        contactSubmit.textContent = 'Quiero que me contacten';
       }
     });
   </script>
 
 </body>
 </html>
-
