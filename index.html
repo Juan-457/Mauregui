@@ -917,6 +917,9 @@
             <label for="modelo">Modelo</label>
             <input id="modelo" type="text" name="modelo" placeholder="Ej: Corolla XEi, Amarok, Onix">
 
+            <label for="tipo">Tipo de vehículo</label>
+            <input id="tipo" type="text" name="tipo" placeholder="Ej: SUV, sedán, hatchback, pick-up, utilitario">
+
             <label for="anio">Año</label>
             <input id="anio" type="number" name="anio" placeholder="Ej: 2018">
 
@@ -1112,19 +1115,27 @@
     contactSubmit.addEventListener('click', async () => {
       const marca = document.getElementById('marca').value.trim();
       const modelo = document.getElementById('modelo').value.trim();
+      const tipo = document.getElementById('tipo').value.trim();
       const anio = document.getElementById('anio').value.trim();
       const valorEstimado = document.getElementById('valorEstimado').value.trim();
       const telefono = document.getElementById('telefono').value.trim();
       const comentarios = document.getElementById('comentarios').value.trim();
 
-      if (!marca || !modelo || !telefono) {
-        alert('Completá al menos Marca, Modelo y Teléfono para que podamos ayudarte.');
+      // Siempre pedimos teléfono, y al menos:
+      // - Marca + Modelo, o
+      // - Tipo de vehículo
+      const tieneMarcaYModelo = marca && modelo;
+      const tieneTipo = tipo !== '';
+
+      if (!telefono || (!tieneMarcaYModelo && !tieneTipo)) {
+        alert('Completá Teléfono y al menos Marca + Modelo o el Tipo de vehículo (SUV, sedán, etc).');
         return;
       }
 
       const payload = {
         marca,
         modelo,
+        tipo,
         anio,
         valorEstimado,
         telefono,
@@ -1161,3 +1172,4 @@
 
 </body>
 </html>
+
