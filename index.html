@@ -936,6 +936,10 @@
           </div>
 
           <form class="contact-form" id="contactForm">
+            <!-- NUEVO CAMPO: NOMBRE DE LA PERSONA QUE CONTACTA -->
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" type="text" name="nombre" placeholder="Tu nombre y apellido">
+
             <label for="marca">Marca</label>
             <input id="marca" type="text" name="marca" placeholder="Ej: Toyota, Volkswagen, Chevrolet">
 
@@ -1137,6 +1141,7 @@
     const contactSubmit = document.getElementById('contactSubmit');
 
     contactSubmit.addEventListener('click', async () => {
+      const nombre = document.getElementById('nombre').value.trim();
       const marca = document.getElementById('marca').value.trim();
       const modelo = document.getElementById('modelo').value.trim();
       const tipo = document.getElementById('tipo').value.trim();
@@ -1148,12 +1153,13 @@
       const tieneMarcaYModelo = marca && modelo;
       const tieneTipo = tipo !== '';
 
-      if (!telefono || (!tieneMarcaYModelo && !tieneTipo)) {
-        alert('Completá Teléfono y al menos Marca + Modelo o el Tipo de vehículo (SUV, sedán, etc).');
+      if (!nombre || !telefono || (!tieneMarcaYModelo && !tieneTipo)) {
+        alert('Completá Nombre, Teléfono y al menos Marca + Modelo o el Tipo de vehículo (SUV, sedán, etc).');
         return;
       }
 
       const payload = {
+        nombre,
         marca,
         modelo,
         tipo,
