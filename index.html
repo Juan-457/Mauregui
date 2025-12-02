@@ -38,7 +38,6 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text-main);
-      /* Fondo con tu imagen */
       background: var(--bg-light) url('fondo.png') center center / cover fixed no-repeat;
     }
 
@@ -95,7 +94,7 @@
       margin-left: auto;
     }
 
-    /* ======================= HERO ======================= */
+    /* ======================= HERO PRINCIPAL ======================= */
     .hero {
       position: relative;
       width: 100%;
@@ -172,7 +171,6 @@
       margin: 0 auto 40px;
     }
 
-    /* Ahora todas las secciones “claras” y “grises” usan un degradé suave */
     .section-light,
     .section-gray {
       background: linear-gradient(
@@ -441,11 +439,6 @@
       background: var(--primary);
     }
 
-    .finan-online-link {
-      text-align: center;
-      margin-top: 25px;
-    }
-
     .btn-primary {
       display: inline-block;
       border: none;
@@ -471,13 +464,18 @@
       font-weight: 600;
     }
 
+    .finan-online-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
     .finan-online-note {
       font-size: 0.9rem;
       color: var(--text-muted);
       margin-top: 6px;
     }
 
-    /* ======================= CONTACTO / BUSCAR AUTO ======================= */
+    /* ======================= CONTACTO / TU FUTURO AUTO ======================= */
     .contact-grid {
       display: grid;
       grid-template-columns: 1.2fr 1.3fr;
@@ -494,9 +492,6 @@
     .contact-info strong {
       color: var(--text-main);
     }
-    <div class="contact-logo-box">
-  <img src="logo-mauregui.png" alt="Mauregui Automotores" />
-</div>
 
     .contact-form {
       background: #ffffff;
@@ -582,6 +577,24 @@
       color: #f0f0f0;
     }
 
+    /* Logo grande dentro de la columna izquierda */
+    .contact-logo-box {
+      width: 100%;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .contact-logo-box img {
+      width: 80%;
+      max-width: 360px;
+      opacity: 0.92;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
+      object-fit: contain;
+    }
+
     /* ======================= FOOTER ======================= */
     footer {
       padding: 18px 20px;
@@ -651,6 +664,10 @@
         max-width: 500px;
         margin: 0 auto;
       }
+
+      .contact-logo-box {
+        height: 200px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -695,22 +712,6 @@
         font-size: 1.6rem;
       }
     }
-    .contact-logo-box {
-  width: 100%;
-  height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.contact-logo-box img {
-  width: 80%;
-  max-width: 360px;
-  opacity: 0.9;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
-  object-fit: contain;
-}
   </style>
 </head>
 <body>
@@ -927,6 +928,11 @@
             <p style="margin-top:12px; font-weight:500;">
               Completá el formulario y luego un especialista te contactará para asesorarte.
             </p>
+
+            <!-- LOGO GRANDE DE MAUREGUI -->
+            <div class="contact-logo-box">
+              <img src="logo-mauregui.png" alt="Mauregui Automotores">
+            </div>
           </div>
 
           <form class="contact-form" id="contactForm">
@@ -976,7 +982,6 @@
      class="whatsapp-bubble"
      target="_blank"
      aria-label="WhatsApp Mauregui Automotores">
-    <!-- Icono tipo WhatsApp en SVG -->
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M16 3C9.383 3 4 8.149 4 14.5c0 2.55.86 4.91 2.34 6.83L5 27l5.86-1.2A12.6 12.6 0 0 0 16 26c6.617 0 12-5.149 12-11.5S22.617 3 16 3zm0 2c5.523 0 10 4.29 10 9.5S21.523 24 16 24a10.6 10.6 0 0 1-4.7-1.1l-.34-.17-3.48.71.72-3.26-.22-.33A7.87 7.87 0 0 1 6 14.5C6 9.29 10.477 5 16 5zm-3.07 4.5c-.25-.01-.52.01-.81.08-.42.11-.96.49-1.1.96-.28.9-.72 2.78.86 4.82 1.57 2.03 3.38 2.9 4.34 3.26.45.17 1.01.13 1.35.08.41-.06 1.25-.51 1.43-1.01.18-.49.18-.9.13-.98-.06-.08-.2-.13-.42-.24-.23-.11-1.36-.67-1.57-.75-.21-.08-.36-.11-.51.11-.15.22-.59.75-.72.91-.13.15-.27.17-.5.06-.23-.11-.96-.36-1.83-1.16-.68-.61-1.14-1.37-1.27-1.6-.13-.23-.01-.35.1-.46.1-.1.23-.27.34-.4.11-.13.15-.22.23-.37.08-.15.05-.28-.01-.4-.06-.11-.53-1.29-.73-1.76-.18-.44-.37-.45-.53-.46z"/>
     </svg>
@@ -1125,7 +1130,7 @@
 
     window.addEventListener('resize', updateFinanCarousel);
 
-    // ========== FORMULARIO "TU FUTURO AUTO" → JSON A UNA URL ==========
+    // ========== FORMULARIO "TU FUTURO AUTO" ==========
     const CONTACT_ENDPOINT = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f0637f326ee14691a60251bb3dd00978/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=7DaHMaLcyJtwzzX_Id0YN5TGMliWRBlLNBAuD9CFd6I";
 
     const contactForm = document.getElementById('contactForm');
@@ -1140,9 +1145,6 @@
       const telefono = document.getElementById('telefono').value.trim();
       const comentarios = document.getElementById('comentarios').value.trim();
 
-      // Siempre pedimos teléfono, y al menos:
-      // - Marca + Modelo, o
-      // - Tipo de vehículo
       const tieneMarcaYModelo = marca && modelo;
       const tieneTipo = tipo !== '';
 
@@ -1191,4 +1193,3 @@
 
 </body>
 </html>
-
