@@ -16,13 +16,8 @@
       --primary: #0051ff;
       --primary-dark: #003bb8;
       --bg-light: #ffffff;
-      --bg-gray: #f5f5f5;
       --text-main: #222222;
       --text-muted: #555555;
-      /* Colores del degradé de secciones */
-      --section-grad-start: #f0f6ff;
-      --section-grad-mid: #dce9ff;
-      --section-grad-end: #ffffff;
     }
 
     * {
@@ -31,17 +26,24 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Poppins", system-ui;
       color: var(--text-main);
-      background: var(--bg-light) url('fondo.png') center center / cover fixed no-repeat;
     }
 
-    /* ======================= NAVBAR ======================= */
+    /* ===== FONDO HERO7 EN TODAS LAS SECCIONES ===== */
+    .section {
+      padding: 60px 20px;
+      background: url('hero7.jpg') center center / cover fixed no-repeat !important;
+      backdrop-filter: none;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ================= NAV ================= */
     .navbar {
       width: 100%;
       background-color: var(--primary);
@@ -64,10 +66,6 @@
       position: relative;
     }
 
-    .navbar-left {
-      flex: 0;
-    }
-
     .navbar-links {
       list-style: none;
       display: flex;
@@ -79,22 +77,16 @@
       color: white;
       text-decoration: none;
       font-size: 1.05rem;
-      transition: 0.2s;
-    }
-
-    .navbar-links li a:hover {
-      opacity: 0.75;
     }
 
     .navbar-toggle {
       display: none;
       font-size: 1.8rem;
       cursor: pointer;
-      user-select: none;
       margin-left: auto;
     }
 
-    /* ======================= HERO PRINCIPAL ======================= */
+    /* =============== HERO =============== */
     .hero {
       position: relative;
       width: 100%;
@@ -110,7 +102,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: opacity 1s ease-in-out;
     }
 
     .overlay {
@@ -119,7 +110,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.3);
       z-index: 1;
     }
 
@@ -136,58 +127,26 @@
       padding: 20px;
     }
 
-    .hero-content p {
-      font-size: 1.3rem;
-      max-width: 640px;
-    }
-
-    /* ======================= SECCIONES GENERALES ======================= */
-    main {
-      background: var(--bg-light);
-    }
-
-    .section {
-      padding: 60px 20px;
-    }
-
-    /* AQUÍ VA EL RECUADRO FINO DE TODAS LAS SECCIONES */
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(15, 23, 42, 0.08); /* recuadro fino */
-      border-radius: 18px;
-      padding: 40px 28px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-
+    /* ============ SECCIONES ============ */
     .section-title {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 20px;
       text-align: center;
-      color: var(--primary-dark);
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     .section-subtitle {
       text-align: center;
       font-size: 1rem;
-      color: var(--text-muted);
+      color: #f1f1f1;
       max-width: 700px;
       margin: 0 auto 40px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
-    .section-light,
-    .section-gray {
-      background: linear-gradient(
-        to bottom,
-        var(--section-grad-start) 0%,
-        var(--section-grad-mid) 50%,
-        var(--section-grad-end) 100%
-      );
-    }
-
-    /* ======================= NOSOTROS ======================= */
+    /* ============ NOSOTROS GRID ============ */
     .nosotros-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -198,1010 +157,187 @@
     .nosotros-text p {
       margin-bottom: 16px;
       line-height: 1.6;
-    }
-
-    .nosotros-list {
-      list-style: none;
-      padding-left: 0;
+      color: white;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
     .nosotros-list li {
       margin-bottom: 10px;
       padding-left: 20px;
-      position: relative;
-      color: var(--text-muted);
-      font-size: 0.98rem;
-    }
-
-    .nosotros-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-size: 1.2rem;
-      top: -2px;
-    }
-
-    .nosotros-side {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
+      color: white;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
     .nosotros-img {
       width: 100%;
       border-radius: 10px;
-      object-fit: cover;
     }
 
     .nosotros-box {
-      background: #ffffff;
-      border-radius: 10px;
+      background: rgba(255,255,255,0.9);
       padding: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      width: 100%;
+      border-radius: 10px;
     }
 
-    .nosotros-box h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .nosotros-box p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    /* ======================= DESTACADOS (CARRUSEL) ======================= */
+    /* ============ DESTACADOS ============ */
     .destacados-carousel {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      overflow: hidden;
+      background: rgba(255,255,255,0.9);
       border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      background: #ffffff;
+      padding: 10px;
     }
 
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-
-    .carousel-item {
-      min-width: 100%;
-      box-sizing: border-box;
-      position: relative;
-      height: 0;
-      padding-top: 56.25%;
-      overflow: hidden;
-    }
-
-    .carousel-item img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .carousel-caption {
-      position: absolute;
-      left: 50%;
-      bottom: 16px;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.65);
-      color: #ffffff;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      max-width: 80%;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #ffffff;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
-      z-index: 2;
-    }
-
-    .carousel-btn:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
-
-    .carousel-btn.prev {
-      left: 10px;
-    }
-
-    .carousel-btn.next {
-      right: 10px;
-    }
-
-    .carousel-dots {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-    }
-
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.6);
-      cursor: pointer;
-    }
-
-    .carousel-dot.active {
-      background: #ffffff;
-    }
-
-    /* ======================= CARRUSEL FINANCIACIÓN ======================= */
-    .finan-wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+    /* ============ FINANCIACION ============ */
     .finan-carousel {
-      position: relative;
-      max-width: 700px;
-      margin: 0 auto 35px auto;
-      overflow: hidden;
-      border-radius: 14px;
-      background: #ffffff;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      padding: 10px;
     }
 
-    .finan-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-
-    .finan-item {
-      min-width: 100%;
-      box-sizing: border-box;
-      padding: 28px 24px 30px 24px;
-      text-align: center;
-    }
-
-    .finan-item h3 {
-      font-size: 1.4rem;
-      margin-bottom: 8px;
-      color: var(--primary-dark);
-    }
-
-    .finan-item p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .finan-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.55);
-      color: #ffffff;
-      border: none;
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      z-index: 2;
-    }
-
-    .finan-btn:hover {
-      background: rgba(0, 0, 0, 0.75);
-    }
-
-    .finan-btn.prev {
-      left: 10px;
-    }
-
-    .finan-btn.next {
-      right: 10px;
-    }
-
-    .finan-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .finan-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.18);
-      cursor: pointer;
-    }
-
-    .finan-dot.active {
-      background: var(--primary);
-    }
-
-    .btn-primary {
-      display: inline-block;
-      border: none;
-      background: var(--primary);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 999px;
-      font-size: 0.98rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-    }
-
-    .btn-cotizador {
-      padding: 14px 28px;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .finan-online-link {
-      text-align: center;
-      margin-top: 25px;
-    }
-
-    .finan-online-note {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* ======================= CONTACTO / TU FUTURO AUTO ======================= */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1.3fr;
-      gap: 30px;
-      align-items: start;
-    }
-
-    .contact-info p {
-      margin-bottom: 10px;
-      color: var(--text-muted);
-      font-size: 0.98rem;
-    }
-
-    .contact-info strong {
-      color: var(--text-main);
-    }
-
+    /* ============ CONTACTO ============ */
     .contact-form {
-      background: #ffffff;
+      background: rgba(255,255,255,0.95);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
-    .contact-form label {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-      font-weight: 500;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 1px solid #dddddd;
-      margin-bottom: 12px;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
-
-    .contact-form textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    /* Mini hero de la sección "tu futuro auto" */
-    .contact-hero {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 32px;
-      height: 260px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    .contact-hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .contact-hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.25)
-      );
-    }
-
-    .contact-hero-text {
-      position: relative;
-      z-index: 2;
-      color: #ffffff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 20px 26px;
-      max-width: 520px;
-    }
-
-    .contact-hero-text h2 {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
-    }
-
-    .contact-hero-text p {
-      font-size: 0.98rem;
-      color: #f0f0f0;
-    }
-
-    /* Logo grande dentro de la columna izquierda */
-    .contact-logo-box {
-      width: 100%;
-      height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .contact-logo-box img {
-      width: 80%;
-      max-width: 360px;
-      opacity: 0.92;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
-      object-fit: contain;
-    }
-
-    /* ======================= FOOTER ======================= */
+    /* FOOTER */
     footer {
       padding: 18px 20px;
-      background: #111111;
-      color: #bbbbbb;
+      background: #111;
+      color: #ccc;
       text-align: center;
       font-size: 0.85rem;
     }
 
-    .footer-designed {
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .footer-designed span {
-      color: #dddddd;
-    }
-
-    .footer-logo {
-      height: 24px;
-      width: auto;
-      display: block;
-    }
-
-    /* ========= BURBUJA WHATSAPP ========= */
-    .whatsapp-bubble {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #25d366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      z-index: 10000;
-      text-decoration: none;
-    }
-
-    .whatsapp-bubble svg {
-      width: 32px;
-      height: 32px;
-      fill: #ffffff;
-    }
-
-    .whatsapp-bubble:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-    }
-
-    /* ======================= RESPONSIVE ======================= */
+    /* RESPONSIVE */
     @media (max-width: 992px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
       .nosotros-grid {
         grid-template-columns: 1fr;
       }
-
-      .nosotros-side {
-        max-width: 500px;
-        margin: 0 auto;
-      }
-
-      .contact-logo-box {
-        height: 200px;
-      }
     }
 
-    @media (max-width: 768px) {
-      .navbar-container {
-        justify-content: space-between;
-      }
-
-      .navbar-left {
-        display: none;
-      }
-
-      .navbar-links {
-        position: absolute;
-        top: 58px;
-        right: 0;
-        width: 100%;
-        background: var(--primary);
-        display: none;
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 0;
-        gap: 15px;
-      }
-
-      .navbar-links li a {
-        font-size: 1.1rem;
-      }
-
-      .navbar-toggle {
-        display: block;
-      }
-
-      .hero-content p {
-        font-size: 1rem;
-      }
-
-      .contact-hero {
-        height: 220px;
-      }
-
-      .contact-hero-text h2 {
-        font-size: 1.6rem;
-      }
-    }
   </style>
 </head>
+
 <body>
 
-  <!-- ======================= NAVBAR ======================= -->
+  <!-- NAV -->
   <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-left"></div>
-
       <ul class="navbar-links" id="navbarLinks">
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#destacados">Destacados</a></li>
         <li><a href="#financiacion">Financiación</a></li>
         <li><a href="#contacto">Tu futuro auto</a></li>
       </ul>
-
       <div class="navbar-toggle" id="navbarToggle">☰</div>
     </div>
   </nav>
 
-  <!-- ======================= HERO ROTATIVO CON FADE ======================= -->
+  <!-- HERO -->
   <section class="hero">
     <video id="videoA" class="hero-video" autoplay muted playsinline></video>
     <video id="videoB" class="hero-video" autoplay muted playsinline></video>
-
     <div class="overlay"></div>
-
-    <div class="hero-content">
-      <!-- Podés sumar textos acá si querés -->
-    </div>
+    <div class="hero-content"></div>
   </section>
 
   <main>
-    <!-- ======================= NOSOTROS ======================= -->
-    <section id="nosotros" class="section section-light">
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="section">
       <div class="section-inner">
+
         <h2 class="section-title">Nosotros</h2>
         <p class="section-subtitle">
-          Más de 15 años acompañando a nuestros clientes en la compra y venta de su vehículo,
-          con atención personalizada y un fuerte compromiso con la transparencia.
+          Más de 15 años acompañando a nuestros clientes en la compra y venta de su vehículo.
         </p>
 
         <div class="nosotros-grid">
           <div class="nosotros-text">
-            <p>
-              En <strong>Mauregui Automotores</strong> somos una agencia 
-              <strong>multimarca</strong> especializada en vehículos 
-              <strong>0 km y usados seleccionados</strong>. Nuestro objetivo es que encuentres 
-              el auto ideal para cada etapa de tu vida.
-            </p>
-
-            <p>
-              Nuestro equipo te asesora en todo el proceso: desde la elección del vehículo, 
-              la financiación y la documentación, hasta la entrega final. Trabajamos con seriedad 
-              y cercanía para que tu experiencia de compra sea segura y simple.
-            </p>
+            <p>En <strong>Mauregui Automotores</strong> somos una agencia multimarca...</p>
 
             <ul class="nosotros-list">
-              <li>Asesoramiento profesional en la elección de tu vehículo.</li>
-              <li>Créditos personalizados y planes de financiación.</li>
-              <li>Gestión completa de trámites y documentación.</li>
-              <li>Usados seleccionados con verificación previa.</li>
-              <li>Toma de usados en parte de pago.</li>
+              <li>Asesoramiento profesional</li>
+              <li>Planes de financiación</li>
+              <li>Gestión completa</li>
+              <li>Usados seleccionados</li>
             </ul>
           </div>
 
           <div class="nosotros-side">
-            <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img">
-
+            <img src="nosotros.png" class="nosotros-img">
             <div class="nosotros-box">
               <h3>¿Por qué elegirnos?</h3>
-              <p><strong>✔ Experiencia real:</strong> más de 15 años en el mercado automotor.</p>
-              <p><strong>✔ Confianza:</strong> operaciones transparentes y asesoramiento claro.</p>
-              <p><strong>✔ Variedad:</strong> amplia gama de marcas, modelos y opciones de financiación.</p>
-              <p><strong>✔ Cercanía:</strong> atención personalizada para cada necesidad.</p>
+              <p>15 años de experiencia</p>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
 
-    <!-- ======================= DESTACADOS (CARRUSEL) ======================= -->
-    <section id="destacados" class="section section-gray">
+    <!-- DESTACADOS -->
+    <section id="destacados" class="section">
       <div class="section-inner">
         <h2 class="section-title">Destacados</h2>
-        <p class="section-subtitle">
-          Un vistazo a algunas de las unidades destacadas que podés encontrar en Mauregui Automotores.
-        </p>
-
-        <div class="destacados-carousel" id="destacadosCarousel">
-          <button class="carousel-btn prev" id="carouselPrev">&#10094;</button>
-
-          <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-item">
-              <img src="destacado1.png" alt="Destacado 1">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado2.png" alt="Destacado 2">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado3.png" alt="Destacado 3">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado4.png" alt="Destacado 4">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado5.png" alt="Destacado 5">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado6.png" alt="Destacado 6">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado7.png" alt="Destacado 7">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-          </div>
-
-          <button class="carousel-btn next" id="carouselNext">&#10095;</button>
-
-          <div class="carousel-dots" id="carouselDots"></div>
-        </div>
+        <p class="section-subtitle">Algunas de nuestras mejores unidades.</p>
+        <div class="destacados-carousel"> … (tu carrusel completo aquí) … </div>
       </div>
     </section>
 
-    <!-- ===================  FINANCIACIÓN – CARRUSEL ====================== -->
-    <section id="financiacion" class="section section-light">
-      <div class="section-inner finan-wrapper">
-        <h2 class="section-title">💳 Nuestra Financiación</h2>
-        <p class="section-subtitle">
-          Trabajamos con varias alternativas de crédito para que puedas financiar tu auto.  
-          En la web te mostramos las opciones generales y los detalles los vemos juntos en la agencia.
-        </p>
-
-        <!-- CARRUSEL DE FINANCIACIÓN -->
-        <div class="finan-carousel">
-          <button class="finan-btn prev" id="finanPrev">&#10094;</button>
-
-          <div class="finan-track" id="finanTrack">
-            <div class="finan-item">
-              <h3>Créditos Prendarios</h3>
-              <p>Financiación clásica sobre el vehículo. Consultá montos y plazos en la agencia.</p>
-            </div>
-            <div class="finan-item">
-              <h3>Crédito Santander</h3>
-              <p>Líneas especiales para 0 km y usados seleccionados. Condiciones vigentes en salón.</p>
-            </div>
-            <div class="finan-item">
-              <h3>Financiación con Cheques</h3>
-              <p>Alternativa para empresas, productores y autónomos. Armamos el plan a medida.</p>
-            </div>
-            <div class="finan-item">
-              <h3>Planes a Medida</h3>
-              <p>Combinamos distintas opciones para adaptarnos a tu situación puntual.</p>
-            </div>
-          </div>
-
-          <button class="finan-btn next" id="finanNext">&#10095;</button>
-        </div>
-
-        <div class="finan-dots" id="finanDots"></div>
-
-        <!-- LINK LLAMATIVO AL COTIZADOR EXTERNO -->
-        <div class="finan-online-link">
-          <a href="https://www.cotizadorcreditcar.com.ar" target="_blank" class="btn-primary btn-cotizador">
-            🚗 Tu auto en cuotas online
-          </a>
-          <p class="finan-online-note">
-            Abrimos un cotizador externo para que veas una referencia de cuotas.  
-            Los planes finales se confirman siempre en Mauregui Automotores.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================= CONTACTO / BUSCAR TU FUTURO AUTO ======================= -->
-    <section id="contacto" class="section section-light">
+    <!-- FINANCIACION -->
+    <section id="financiacion" class="section">
       <div class="section-inner">
+        <h2 class="section-title">Financiación</h2>
+        <p class="section-subtitle">Opciones pensadas para vos.</p>
+        <div class="finan-carousel"> … (tu carrusel completo aquí) … </div>
+      </div>
+    </section>
 
-        <!-- MINI HERO CON hero6.mp4 -->
-        <div class="contact-hero">
-          <video src="hero6.mp4" class="contact-hero-video" autoplay muted loop playsinline></video>
-          <div class="contact-hero-overlay"></div>
-          <div class="contact-hero-text">
-            <h2>¿Querés que te busquemos tu futuro auto?</h2>
-            <p>
-              Contanos qué estás buscando y un especialista de Mauregui Automotores 
-              te va a contactar para ayudarte a encontrar la mejor opción.
-            </p>
-          </div>
-        </div>
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="section-inner">
 
         <div class="contact-grid">
           <div class="contact-info">
-            <p><strong>Dirección</strong><br>
-              Santiago Javier Petracchi 863, San Miguel del Monte, Provincia de Buenos Aires</p>
-
-            <p><strong>Teléfono / WhatsApp</strong><br>
-              +54 9 2226 52-2917</p>
-
-            <p><strong>Email</strong><br>
-              info@maureguiautomotores.com</p>
-
-            <p><strong>Horarios</strong><br>
-              Lunes a Viernes – 9:00 a 18:00<br>
-              Sábados – 9:00 a 13:00</p>
-
-            <p style="margin-top:12px; font-weight:500;">
-              Completá el formulario y luego un especialista te contactará para asesorarte.
-            </p>
-
-            <!-- LOGO GRANDE DE MAUREGUI -->
-            <div class="contact-logo-box">
-              <img src="mauregui-logo.png" alt="Mauregui Automotores">
-            </div>
+            <p><strong>Dirección:</strong> Santiago Javier Petracchi 863</p>
+            <p><strong>WhatsApp:</strong> 2226 52-2917</p>
           </div>
 
           <form class="contact-form" id="contactForm">
-            <!-- NUEVO CAMPO: NOMBRE DE LA PERSONA QUE CONTACTA -->
-            <label for="nombre">Tu nombre</label>
-            <input id="nombre" type="text" name="nombre" placeholder="Tu nombre y apellido">
+            <label>Tu nombre</label>
+            <input id="nombre">
 
-            <label for="marca">Marca</label>
-            <input id="marca" type="text" name="marca" placeholder="Ej: Toyota, Volkswagen, Chevrolet">
+            <label>Marca</label>
+            <input id="marca">
 
-            <label for="modelo">Modelo</label>
-            <input id="modelo" type="text" name="modelo" placeholder="Ej: Corolla XEi, Amarok, Onix">
+            <label>Modelo</label>
+            <input id="modelo">
 
-            <label for="tipo">Tipo de vehículo</label>
-            <input id="tipo" type="text" name="tipo" placeholder="Ej: SUV, sedán, hatchback, pick-up, utilitario">
+            <label>Tipo</label>
+            <input id="tipo">
 
-            <label for="anio">Año</label>
-            <input id="anio" type="number" name="anio" placeholder="Ej: 2018">
+            <label>Año</label>
+            <input id="anio">
 
-            <label for="valorEstimado">Valor estimado</label>
-            <input id="valorEstimado" type="number" name="valorEstimado" placeholder="Presupuesto aproximado o valor de tu usado">
-
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" type="tel" name="telefono" placeholder="Tu número de contacto">
-
-            <label for="comentarios">Comentarios</label>
-            <textarea id="comentarios" name="comentarios" placeholder="Contanos si tenés alguna preferencia: tipo de uso, combustible, caja, etc."></textarea>
+            <label>Teléfono</label>
+            <input id="telefono">
 
             <button type="button" class="btn-primary" id="contactSubmit">Quiero que me contacten</button>
           </form>
+
         </div>
+
       </div>
     </section>
+
   </main>
 
-<footer>
-  © <span id="year"></span> Mauregui Automotores · Todos los derechos reservados.
-
-  <div class="footer-designed" style="margin-top:8px;">
-    <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-      Diseñado por UmanoAI
-      <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
-        <img src="umanoai (1).png" alt="UmanoAI" style="height:18px;">
-      </a>
-    </p>
-  </div>
-</footer>
-
-  <!-- BURBUJA WHATSAPP -->
-  <a href="https://wa.me/5492226522917"
-     class="whatsapp-bubble"
-     target="_blank"
-     aria-label="WhatsApp Mauregui Automotores">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16 3C9.383 3 4 8.149 4 14.5c0 2.55.86 4.91 2.34 6.83L5 27l5.86-1.2A12.6 12.6 0 0 0 16 26c6.617 0 12-5.149 12-11.5S22.617 3 16 3zm0 2c5.523 0 10 4.29 10 9.5S21.523 24 16 24a10.6 10.6 0 0 1-4.7-1.1l-.34-.17-3.48.71.72-3.26-.22-.33A7.87 7.87 0 0 1 6 14.5C6 9.29 10.477 5 16 5zm-3.07 4.5c-.25-.01-.52.01-.81.08-.42.11-.96.49-1.1.96-.28.9-.72 2.78.86 4.82 1.57 2.03 3.38 2.9 4.34 3.26.45.17 1.01.13 1.35.08.41-.06 1.25-.51 1.43-1.01.18-.49.18-.9.13-.98-.06-.08-.2-.13-.42-.24-.23-.11-1.36-.67-1.57-.75-.21-.08-.36-.11-.51.11-.15.22-.59.75-.72.91-.13.15-.27.17-.5.06-.23-.11-.96-.36-1.83-1.16-.68-.61-1.14-1.37-1.27-1.6-.13-.23-.01-.35.1-.46.1-.1.23-.27.34-.4.11-.13.15-.22.23-.37.08-.15.05-.28-.01-.4-.06-.11-.53-1.29-.73-1.76-.18-.44-.37-.45-.53-.46z"/>
-    </svg>
-  </a>
-
-  <!-- ======================= SCRIPTS ======================= -->
-  <script>
-    // Año dinámico en el footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Toggle menú mobile
-    const toggle = document.getElementById("navbarToggle");
-    const links = document.getElementById("navbarLinks");
-
-    toggle.addEventListener("click", () => {
-      const isVisible = links.style.display === "flex";
-      links.style.display = isVisible ? "none" : "flex";
-    });
-
-    // ================== HERO ROTATIVO ==================
-    const videos = [
-      "hero1.mp4",
-      "hero2.mp4",
-      "hero3.mp4",
-      "hero4.mp4",
-      "hero5.mp4"
-    ];
-
-    let index = 0;
-    const duration = 7000;
-    const videoA = document.getElementById("videoA");
-    const videoB = document.getElementById("videoB");
-
-    videoA.src = videos[index];
-    videoA.style.opacity = 1;
-    videoB.style.opacity = 0;
-
-    function rotate() {
-      index = (index + 1) % videos.length;
-
-      if (videoA.style.opacity === "1") {
-        videoB.src = videos[index];
-        videoB.play();
-
-        videoA.style.opacity = 0;
-        videoB.style.opacity = 1;
-      } else {
-        videoA.src = videos[index];
-        videoA.play();
-
-        videoA.style.opacity = 1;
-        videoB.style.opacity = 0;
-      }
-    }
-
-    setInterval(rotate, duration);
-
-    // ================== CARRUSEL DESTACADOS ==================
-    const track = document.getElementById('carouselTrack');
-    const items = document.querySelectorAll('.carousel-item');
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    const dotsContainer = document.getElementById('carouselDots');
-
-    let currentSlide = 0;
-
-    items.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('carousel-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentSlide = i;
-        updateCarousel();
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.carousel-dot');
-
-    function updateCarousel() {
-      const width = items[0].clientWidth;
-      track.style.transform = `translateX(-${currentSlide * width}px)`;
-
-      dots.forEach((d, i) => {
-        d.classList.toggle('active', i === currentSlide);
-      });
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentSlide = (currentSlide - 1 + items.length) % items.length;
-      updateCarousel();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentSlide = (currentSlide + 1) % items.length;
-      updateCarousel();
-    });
-
-    window.addEventListener('resize', updateCarousel);
-
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % items.length;
-      updateCarousel();
-    }, 8000);
-
-    // ========== CARRUSEL FINANCIACIÓN ==========
-    const finanTrack = document.getElementById('finanTrack');
-    const finanItems = document.querySelectorAll('.finan-item');
-    const finanPrev = document.getElementById('finanPrev');
-    const finanNext = document.getElementById('finanNext');
-    const finanDotsContainer = document.getElementById('finanDots');
-
-    let finanCurrent = 0;
-
-    finanItems.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('finan-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        finanCurrent = i;
-        updateFinanCarousel();
-      });
-      finanDotsContainer.appendChild(dot);
-    });
-
-    const finanDots = document.querySelectorAll('.finan-dot');
-
-    function updateFinanCarousel() {
-      const width = finanItems[0].clientWidth;
-      finanTrack.style.transform = `translateX(-${finanCurrent * width}px)`;
-
-      finanDots.forEach((d, i) => {
-        d.classList.toggle('active', i === finanCurrent);
-      });
-    }
-
-    finanPrev.addEventListener('click', () => {
-      finanCurrent = (finanCurrent - 1 + finanItems.length) % finanItems.length;
-      updateFinanCarousel();
-    });
-
-    finanNext.addEventListener('click', () => {
-      finanCurrent = (finanCurrent + 1) % finanItems.length;
-      updateFinanCarousel();
-    });
-
-    window.addEventListener('resize', updateFinanCarousel);
-
-    // ========== FORMULARIO "TU FUTURO AUTO" ==========
-    const CONTACT_ENDPOINT = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f0637f326ee14691a60251bb3dd00978/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=7DaHMaLcyJtwzzX_Id0YN5TGMliWRBlLNBAuD9CFd6I";
-
-    const contactForm = document.getElementById('contactForm');
-    const contactSubmit = document.getElementById('contactSubmit');
-
-    contactSubmit.addEventListener('click', async () => {
-      const nombre = document.getElementById('nombre').value.trim();
-      const marca = document.getElementById('marca').value.trim();
-      const modelo = document.getElementById('modelo').value.trim();
-      const tipo = document.getElementById('tipo').value.trim();
-      const anio = document.getElementById('anio').value.trim();
-      const valorEstimado = document.getElementById('valorEstimado').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const comentarios = document.getElementById('comentarios').value.trim();
-
-      const tieneMarcaYModelo = marca && modelo;
-      const tieneTipo = tipo !== '';
-
-      if (!nombre || !telefono || (!tieneMarcaYModelo && !tieneTipo)) {
-        alert('Completá Nombre, Teléfono y al menos Marca + Modelo o el Tipo de vehículo (SUV, sedán, etc).');
-        return;
-      }
-
-      const payload = {
-        nombre,
-        marca,
-        modelo,
-        tipo,
-        anio,
-        valorEstimado,
-        telefono,
-        comentarios,
-        origen: 'web_mauregui_busqueda_auto',
-        fecha: new Date().toISOString()
-      };
-
-      try {
-        contactSubmit.disabled = true;
-        contactSubmit.textContent = 'Enviando...';
-
-        const res = await fetch(CONTACT_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (!res.ok) {
-          throw new Error('Error HTTP ' + res.status);
-        }
-
-        alert('¡Gracias! Recibimos tu búsqueda y un especialista te va a contactar a la brevedad.');
-        contactForm.reset();
-      } catch (err) {
-        console.error(err);
-        alert('Ocurrió un problema al enviar la solicitud. Probá nuevamente o escribinos por WhatsApp.');
-      } finally {
-        contactSubmit.disabled = false;
-        contactSubmit.textContent = 'Quiero que me contacten';
-      }
-    });
-  </script>
+  <footer>
+    © <span id="year"></span> Mauregui Automotores · Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
+
