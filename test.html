@@ -151,17 +151,12 @@
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      text-align: left;
-      padding: 0 24px;
-    }
+    max-width: 650px;       /* evita que el texto se expanda hacia la derecha */
+    padding-left: 40px;     /* mueve todo el texto a la izquierda */
+    margin-left: 0;         /* asegura alineación al borde */
+    z-index: 10;            /* siempre arriba del video */
+}
+
 
     .hero-inner {
       max-width: 1200px;
