@@ -118,171 +118,252 @@
     }
 
     /* ======================= HERO PRINCIPAL ======================= */
+   <style>
+  /* ======================= HERO PRINCIPAL ======================= */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center; /* centra verticalmente el contenido */
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.65));
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 650px;
+    margin-left: auto;      /* 🔹 empuja el bloque hacia la derecha */
+    padding-right: 40px;    /* espacio desde el borde derecho */
+    z-index: 10;            /* siempre arriba del video */
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(15,23,42,0.85);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+    color: #e5e7eb;
+  }
+
+  .hero-pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #22c55e;
+  }
+
+  .hero-title {
+    font-size: 2.7rem;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: #f9fafb;
+  }
+
+  .hero-title span {
+    color: #60a5fa;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    max-width: 520px;
+    color: #e5e7eb;
+    margin-bottom: 20px;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .hero-badge {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.6);
+    font-size: 0.82rem;
+    backdrop-filter: blur(12px);
+    background: rgba(15,23,42,0.55);
+    color: #e5e7eb;
+    white-space: nowrap;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .hero-cta-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(90deg, #2563eb, #4f46e5);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    box-shadow: 0 12px 30px rgba(37,99,235,0.45);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .hero-cta-main:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 40px rgba(37,99,235,0.6);
+  }
+
+  .hero-cta-secondary {
+    font-size: 0.92rem;
+    color: #e5e7eb;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(148,163,184,0.7);
+    padding-bottom: 2px;
+    opacity: 0.9;
+  }
+
+  .hero-cta-secondary:hover {
+    opacity: 1;
+  }
+
+  .hero-meta {
+    margin-top: 24px;
+    font-size: 0.78rem;
+    color: #9ca3af;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hero-meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #6b7280;
+  }
+
+  /* ======= RESPONSIVE HERO ======= */
+  @media (max-width: 992px) {
+    .hero-title {
+      font-size: 2.1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
     .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      /* antes tenía margin-top, ahora lo sacamos porque el padding del body ya baja todo */
-      margin-top: 0;
-      z-index: 1;
-    }
-
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 1s ease-in-out;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.65));
-      z-index: 1;
+      height: 90vh;
+      align-items: flex-end; /* baja el contenido un poco en mobile */
     }
 
     .hero-content {
-    max-width: 650px;       /* evita que el texto se expanda hacia la derecha */
-    padding-left: 40px;     /* mueve todo el texto a la izquierda */
-    margin-left: 0;         /* asegura alineación al borde */
-    z-index: 10;            /* siempre arriba del video */
-}
-
-
-    .hero-inner {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.85);
-      font-size: 0.82rem;
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
-    }
-
-    .hero-pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
+      margin: 0 auto 70px auto;  /* vuelve al centro en mobile */
+      padding: 0 20px;
     }
 
     .hero-title {
-      font-size: 2.7rem;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .hero-title span {
-      color: #60a5fa;
+      font-size: 1.8rem;
     }
 
     .hero-subtitle {
-      font-size: 1rem;
-      max-width: 520px;
-      color: #e5e7eb;
-      margin-bottom: 20px;
+      font-size: 0.95rem;
     }
 
     .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 26px;
-    }
-
-    .hero-badge {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      font-size: 0.82rem;
-      backdrop-filter: blur(12px);
-      background: rgba(15,23,42,0.55);
-      color: #e5e7eb;
-      white-space: nowrap;
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .hero-cta-main {
-      display: inline-flex;
-      align-items: center;
       gap: 8px;
-      padding: 11px 22px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(90deg, #2563eb, #4f46e5);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 0.95rem;
-      box-shadow: 0 12px 30px rgba(37,99,235,0.45);
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
+  }
+</style>
 
-    .hero-cta-main:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(37,99,235,0.6);
-    }
+<section class="hero">
+  <video id="videoA" class="hero-video" autoplay muted playsinline></video>
+  <video id="videoB" class="hero-video" autoplay muted playsinline></video>
 
-    .hero-cta-secondary {
-      font-size: 0.92rem;
-      color: #e5e7eb;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(148,163,184,0.7);
-      padding-bottom: 2px;
-      opacity: 0.9;
-    }
+  <div class="overlay"></div>
 
-    .hero-cta-secondary:hover {
-      opacity: 1;
-    }
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        MAUREGUI AUTOMOTORES · SAN MIGUEL DEL MONTE
+      </div>
 
-    .hero-meta {
-      margin-top: 24px;
-      font-size: 0.78rem;
-      color: #9ca3af;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
+      <h1 class="hero-title">
+        Un <span>auto pensado</span> para cada momento de tu vida.
+      </h1>
 
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
+      <p class="hero-subtitle">
+        0km, usados seleccionados y financiación a medida. Te acompañamos en todo el proceso: elección, papeles, entrega y postventa.
+      </p>
 
-    .hero-meta-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #6b7280;
-    }
+      <div class="hero-badges">
+        <div class="hero-badge">✓ Más de 15 años de trayectoria</div>
+        <div class="hero-badge">✓ Multimarca 0km y usados</div>
+        <div class="hero-badge">✓ Atención 100% personalizada</div>
+      </div>
 
+      <div class="hero-cta">
+        <a href="#contacto" class="hero-cta-main">
+          🚗 Encontrá tu próximo auto
+        </a>
+        <a href="#destacados" class="hero-cta-secondary">
+          Ver unidades destacadas
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span>San Miguel del Monte</span>
+        <span class="hero-meta-dot"></span>
+        <span>Lunes a Viernes 9–18 · Sábados 9–13</span>
+      </div>
+    </div>
+  </div>
+</section>
     /* ======================= SECCIONES GENERALES ======================= */
     main {
       background: transparent;
