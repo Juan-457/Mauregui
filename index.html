@@ -170,43 +170,107 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 20%;              /* un ~15% menos de ancho que antes (era 33%) */
+      width: 22%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.85);  /* negro más oscuro, sigue traslúcido */
-      z-index: 3;               /* arriba del video y del overlay */
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.35)
+      );
+      z-index: 3;  /* arriba del video y del overlay */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 28px 22px;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
     }
 
     .hero-side-inner {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       align-items: flex-start;
       text-align: left;
       color: #ffffff;
-      max-width: 260px;
+      max-width: 280px;
     }
 
     .hero-side-inner img {
-      width: 90%;
-      max-width: 280px;
-      opacity: 0.96;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+      width: 100%;
+      max-width: 260px;
+      opacity: 0.98;
+      filter: drop-shadow(0 10px 26px rgba(0,0,0,0.6));
       object-fit: contain;
+      margin-bottom: 4px;
+    }
+
+    .hero-tag {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.78;
     }
 
     .hero-side-inner h1 {
-      font-size: 1.9rem;
+      font-size: 1.7rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
+      line-height: 1.25;
     }
 
-    .hero-side-inner p {
-      font-size: 1rem;
+    .hero-lead {
+      font-size: 0.95rem;
       opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 4px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .hero-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-bullets li span {
+      font-size: 1rem;
+    }
+
+    .hero-cta {
+      margin-top: 8px;
+    }
+
+    /* BOTÓN OUTLINE PARA EL HERO */
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.8);
+      background: transparent;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: #ffffff;
+      transform: translateY(-1px);
     }
 
     /* ======================= SECCIONES GENERALES ======================= */
@@ -823,15 +887,25 @@
     <div class="hero-side-band">
       <div class="hero-side-inner">
         <img src="mauregui-logo.png" alt="Mauregui Automotores">
-        <h1>Mauregui Automotores</h1>
-        <p>Multimarca · 0 km · Usados seleccionados</p>
+        <span class="hero-tag">San Miguel del Monte · Buenos Aires</span>
+        <h1>Tu próximo auto, sin vueltas</h1>
+        <p class="hero-lead">
+          En <strong>Mauregui Automotores</strong> encontrás 0 km y usados seleccionados,
+          con atención personalizada y financiación a medida para cada etapa de tu vida.
+        </p>
+        <ul class="hero-bullets">
+          <li><span>🔎</span> Te ayudamos a elegir la unidad ideal</li>
+          <li><span>💳</span> Opciones de crédito y planes flexibles</li>
+          <li><span>♻️</span> Tomamos tu usado en parte de pago</li>
+        </ul>
+        <a href="#contacto" class="btn-outline-light hero-cta">Quiero que me asesoren</a>
       </div>
     </div>
 
     <div class="overlay"></div>
 
     <div class="hero-content">
-      <!-- Podés sumar textos acá si querés -->
+      <!-- Opcional: textos centrales si en algún momento querés sumar algo sobre el video -->
     </div>
   </section>
 
@@ -1287,5 +1361,3 @@
   </script>
 </body>
 </html>
-
-
