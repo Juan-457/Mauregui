@@ -273,6 +273,84 @@
       transform: translateY(-1px);
     }
 
+    /* ======================= HERO – CARRUSEL MARCAS DERECHA ======================= */
+    .hero-brand-strip {
+      position: absolute;
+      top: 50%;
+      right: 4%;
+      transform: translateY(-50%);
+      width: 26%;
+      max-width: 320px;
+      background: radial-gradient(circle at top left,
+                  rgba(0, 0, 0, 0.75),
+                  rgba(0, 0, 0, 0.55));
+      border-radius: 18px;
+      padding: 14px 16px 12px;
+      z-index: 3;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-brand-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.85;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hero-brand-carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 4px 0;
+    }
+
+    .hero-brand-track {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      animation: brand-scroll 22s linear infinite;
+      will-change: transform;
+    }
+
+    .hero-brand-logo {
+      flex: 0 0 auto;
+      height: 34px;
+      width: auto;
+      filter: brightness(1.1);
+      opacity: 0.9;
+    }
+
+    .hero-brand-divider {
+      flex: 0 0 auto;
+      width: 1px;
+      height: 22px;
+      background: linear-gradient(
+        to bottom,
+        rgba(248, 250, 252, 0.0),
+        rgba(248, 250, 252, 0.7),
+        rgba(248, 250, 252, 0.0)
+      );
+    }
+
+    @keyframes brand-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     /* ======================= SECCIONES GENERALES ======================= */
     main {
       background: transparent;
@@ -844,6 +922,19 @@
         display: none;
       }
 
+      /* en mobile la caja de marcas baja y se centra */
+      .hero-brand-strip {
+        position: static;
+        transform: none;
+        width: 92%;
+        max-width: 420px;
+        margin: 12px auto 0;
+      }
+
+      .hero-brand-title {
+        text-align: center;
+      }
+
       .contact-hero {
         height: 220px;
       }
@@ -899,6 +990,53 @@
           <li><span>♻️</span> Tomamos tu usado en parte de pago</li>
         </ul>
         <a href="#contacto" class="btn-outline-light hero-cta">Quiero que me asesoren</a>
+      </div>
+    </div>
+
+    <!-- CARRUSEL DE MARCAS SOBRE EL HERO (LADO DERECHO) -->
+    <div class="hero-brand-strip">
+      <div class="hero-brand-title">Marcas con las que trabajamos</div>
+      <div class="hero-brand-carousel">
+        <div class="hero-brand-track">
+          <!-- Primera vuelta -->
+          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-fiat.png" alt="Fiat" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-kia.png" alt="Kia" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-suzuki.png" alt="Suzuki" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-citroen.png" alt="Citroën" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-peugeot.png" alt="Peugeot" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo">
+
+          <!-- Segunda vuelta (duplicada para scroll infinito suave) -->
+          <div class="hero-brand-divider"></div>
+          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-fiat.png" alt="Fiat" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-kia.png" alt="Kia" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-suzuki.png" alt="Suzuki" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-citroen.png" alt="Citroën" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-peugeot.png" alt="Peugeot" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
+          <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo">
+        </div>
       </div>
     </div>
 
