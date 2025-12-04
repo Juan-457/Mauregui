@@ -170,9 +170,9 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 33%;              /* 1/3 del hero */
+      width: 20%;              /* un ~15% menos de ancho que antes (era 33%) */
       height: 100%;
-      background: rgba(0, 0, 0, 0.45);  /* negro super traslúcido */
+      background: rgba(0, 0, 0, 0.65);  /* negro más oscuro, sigue traslúcido */
       z-index: 3;               /* arriba del video y del overlay */
       display: flex;
       align-items: center;
@@ -183,7 +183,7 @@
     .hero-side-inner {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       align-items: flex-start;
       text-align: left;
       color: #ffffff;
@@ -191,21 +191,21 @@
     }
 
     .hero-side-inner img {
-      width: 80%;
-      max-width: 240px;
+      width: 90%;
+      max-width: 280px;
       opacity: 0.96;
       filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
       object-fit: contain;
     }
 
     .hero-side-inner h1 {
-      font-size: 1.6rem;
+      font-size: 1.9rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     .hero-side-inner p {
-      font-size: 0.92rem;
+      font-size: 1rem;
       opacity: 0.9;
     }
 
@@ -1287,4 +1287,5 @@
   </script>
 </body>
 </html>
+
 
