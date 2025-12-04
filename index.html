@@ -134,6 +134,7 @@
       height: 100%;
       object-fit: cover;
       transition: opacity 1s ease-in-out;
+      pointer-events: none; /* para no bloquear clics */
     }
 
     .overlay {
@@ -142,7 +143,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.35);
       background: rgba(0, 0, 0, 0.01);
       z-index: 1;
     }
@@ -165,12 +165,55 @@
       max-width: 640px;
     }
 
+    /* ======================= HERO – BANDA IZQUIERDA ======================= */
+    .hero-side-band {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 33%;              /* 1/3 del hero */
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);  /* negro super traslúcido */
+      z-index: 3;               /* arriba del video y del overlay */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .hero-side-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+      text-align: left;
+      color: #ffffff;
+      max-width: 260px;
+    }
+
+    .hero-side-inner img {
+      width: 80%;
+      max-width: 240px;
+      opacity: 0.96;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+      object-fit: contain;
+    }
+
+    .hero-side-inner h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-side-inner p {
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+
     /* ======================= SECCIONES GENERALES ======================= */
     main {
       background: transparent;
     }
 
-    /* Fondo: ahora las secciones flotan sobre hero7.mp4 */
     .section {
       padding: 60px 20px;
       position: relative;
@@ -204,7 +247,6 @@
       margin: 0 auto 40px;
     }
 
-    /* Dejamos las clases por compatibilidad pero sin cambiar el fondo */
     .section-light,
     .section-gray {
       background: transparent;
@@ -316,7 +358,6 @@
       left: 50%;
       bottom: 16px;
       transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.65);
       background: rgba(0, 0, 0, 0.01);
       color: #ffffff;
       padding: 8px 16px;
@@ -734,6 +775,11 @@
         font-size: 1rem;
       }
 
+      /* en mobile la banda se oculta para que no tape el hero */
+      .hero-side-band {
+        display: none;
+      }
+
       .contact-hero {
         height: 220px;
       }
@@ -772,6 +818,15 @@
   <section class="hero">
     <video id="videoA" class="hero-video" autoplay muted playsinline></video>
     <video id="videoB" class="hero-video" autoplay muted playsinline></video>
+
+    <!-- BANDA IZQUIERDA CON LOGO Y TEXTO -->
+    <div class="hero-side-band">
+      <div class="hero-side-inner">
+        <img src="mauregui-logo.png" alt="Mauregui Automotores">
+        <h1>Mauregui Automotores</h1>
+        <p>Multimarca · 0 km · Usados seleccionados</p>
+      </div>
+    </div>
 
     <div class="overlay"></div>
 
@@ -1232,3 +1287,4 @@
   </script>
 </body>
 </html>
+
