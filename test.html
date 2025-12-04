@@ -1,19 +1,24 @@
+<!DOCTYPE html>
 <!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mauregui Automotores</title>
-  <meta name="description" content="Mauregui Automotores - Multimarca, 0km y usados seleccionados, créditos personalizados y atención personalizada. Un vehículo para cada momento de tu vida.">
-
-  <!-- Tipografía -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+@@ -14,18 +14,14 @@
   <style>
     :root {
       --primary: #0051ff;
+      --primary-dark: #0030b8;
+      --bg-body: radial-gradient(circle at top, #0b1630 0, #020617 40%, #020617 100%);
+      --card-bg: rgba(15, 23, 42, 0.92);
+      --card-soft: rgba(15, 23, 42, 0.72);
+      --border-soft: rgba(148, 163, 184, 0.35);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --chip-bg: rgba(15, 23, 42, 0.9);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.55);
+      --radius-lg: 22px;
+      --radius-md: 16px;
       --primary-dark: #003bb8;
       --bg-light: #ffffff;
       --bg-gray: #f5f5f5;
@@ -25,41 +30,32 @@
     }
 
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+@@ -41,8 +37,9 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text-main);
+      background: var(--bg-body);
+      min-height: 100vh;
       background: var(--bg-light);
       /* 🔹 separa todo el contenido del navbar fijo para que nada quede debajo */
       padding-top: 72px;
     }
 
     /* ======================= VIDEO DE FONDO GLOBAL (hero7.mp4) ======================= */
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+@@ -54,7 +51,7 @@
       height: 100%;
       object-fit: cover;
       z-index: -3;
+      opacity: 0.18;
       opacity: 0.4;
     }
 
     .bg-video-overlay {
-      position: fixed;
-      top: 0;
+@@ -63,22 +60,21 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.85) 0, rgba(15,23,42,0.95) 35%, rgba(15,23,42,0.98) 100%);
       background: rgba(0, 0, 0, 0.25);
       z-index: -2;
     }
@@ -67,317 +63,417 @@
     /* ======================= NAVBAR ======================= */
     .navbar {
       width: 100%;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(18px);
       background-color: var(--primary);
       color: white;
+      padding: 10px 0;
       padding: 12px 0;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 9999;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     .navbar-container {
-      max-width: 1200px;
-      margin: 0 auto;
+@@ -87,49 +83,30 @@
       padding: 0 20px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 18px;
       justify-content: center;
       position: relative;
     }
 
     .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-logo {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar-brand-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
       flex: 0;
     }
 
     .navbar-links {
       list-style: none;
       display: flex;
+      gap: 24px;
+      margin-left: auto;
       gap: 25px;
       margin: 0 auto;
     }
 
     .navbar-links li a {
+      color: #e5e7eb;
       color: white;
       text-decoration: none;
+      font-size: 0.98rem;
+      font-weight: 400;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s ease;
       font-size: 1.05rem;
       transition: 0.2s;
     }
 
     .navbar-links li a:hover {
+      color: #ffffff;
+      border-bottom-color: var(--primary);
       opacity: 0.75;
     }
 
     .navbar-toggle {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      user-select: none;
-      margin-left: auto;
+@@ -145,25 +122,22 @@
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      max-height: 760px;
+      margin-top: 68px;
+      overflow: hidden;
+      /* antes tenía margin-top, ahora lo sacamos porque el padding del body ya baja todo */
+      margin-top: 0;
+      z-index: 1;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.26);
     }
 
-    /* ======================= HERO PRINCIPAL ======================= */
-   <style>
-  /* ======================= HERO PRINCIPAL ======================= */
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    margin-top: 0;
-    z-index: 1;
-    display: flex;
-    align-items: center; /* centra verticalmente el contenido */
-  }
-
-  .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 1s ease-in-out;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.65));
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    max-width: 650px;
-    margin-left: auto;      /* 🔹 empuja el bloque hacia la derecha */
-    padding-right: 40px;    /* espacio desde el borde derecho */
-    z-index: 10;            /* siempre arriba del video */
-  }
-
-  .hero-inner {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .hero-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(15,23,42,0.85);
-    font-size: 0.82rem;
-    letter-spacing: 0.02em;
-    margin-bottom: 16px;
-    color: #e5e7eb;
-  }
-
-  .hero-pill-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: #22c55e;
-  }
-
-  .hero-title {
-    font-size: 2.7rem;
-    line-height: 1.1;
-    margin-bottom: 12px;
-    color: #f9fafb;
-  }
-
-  .hero-title span {
-    color: #60a5fa;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    max-width: 520px;
-    color: #e5e7eb;
-    margin-bottom: 20px;
-  }
-
-  .hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 26px;
-  }
-
-  .hero-badge {
-    padding: 6px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.6);
-    font-size: 0.82rem;
-    backdrop-filter: blur(12px);
-    background: rgba(15,23,42,0.55);
-    color: #e5e7eb;
-    white-space: nowrap;
-  }
-
-  .hero-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .hero-cta-main {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 22px;
-    border-radius: 999px;
-    border: none;
-    background: linear-gradient(90deg, #2563eb, #4f46e5);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.95rem;
-    box-shadow: 0 12px 30px rgba(37,99,235,0.45);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-  }
-
-  .hero-cta-main:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 18px 40px rgba(37,99,235,0.6);
-  }
-
-  .hero-cta-secondary {
-    font-size: 0.92rem;
-    color: #e5e7eb;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(148,163,184,0.7);
-    padding-bottom: 2px;
-    opacity: 0.9;
-  }
-
-  .hero-cta-secondary:hover {
-    opacity: 1;
-  }
-
-  .hero-meta {
-    margin-top: 24px;
-    font-size: 0.78rem;
-    color: #9ca3af;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .hero-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .hero-meta-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #6b7280;
-  }
-
-  /* ======= RESPONSIVE HERO ======= */
-  @media (max-width: 992px) {
-    .hero-title {
-      font-size: 2.1rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      height: 90vh;
-      align-items: flex-end; /* baja el contenido un poco en mobile */
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 1s ease-in-out;
+      filter: drop-shadow(0 26px 70px rgba(0,0,0,0.8));
+      opacity: 0;
+      pointer-events: none;
     }
 
+    .overlay {
+@@ -172,352 +146,265 @@
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.76),
+        rgba(15, 23, 42, 0.22),
+        rgba(15, 23, 42, 0.05)
+      );
+      background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.65));
+      z-index: 1;
+    }
+
+    .hero-inner {
     .hero-content {
-      margin: 0 auto 70px auto;  /* vuelve al centro en mobile */
-      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 28px;
+    }
+
+    .hero-copy {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      padding: 0 24px;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    .hero-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-chip {
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      background: rgba(15,23,42,0.85);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
     }
 
     .hero-title {
-      font-size: 1.8rem;
+      font-size: clamp(2.4rem, 3.2vw, 3rem);
+      font-size: 2.7rem;
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: #60a5ff;
+      color: #60a5fa;
     }
 
     .hero-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 520px;
+      color: #e5e7eb;
+      margin-bottom: 20px;
     }
 
     .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
+      margin-top: 4px;
+      gap: 10px;
+      margin-bottom: 26px;
     }
-  }
-</style>
 
-<section class="hero">
-  <video id="videoA" class="hero-video" autoplay muted playsinline></video>
-  <video id="videoB" class="hero-video" autoplay muted playsinline></video>
+    .hero-badge {
+      font-size: 0.8rem;
+      padding: 6px 11px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 0.82rem;
+      backdrop-filter: blur(12px);
+      background: rgba(15,23,42,0.55);
+      color: #e5e7eb;
+      white-space: nowrap;
+    }
 
-  <div class="overlay"></div>
+    .hero-cta-row {
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      align-items: center;
+    }
 
-  <div class="hero-content">
-    <div class="hero-inner">
-      <div class="hero-pill">
-        <span class="hero-pill-dot"></span>
-        MAUREGUI AUTOMOTORES · SAN MIGUEL DEL MONTE
-      </div>
+    .btn-primary {
+    .hero-cta-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), #38bdf8);
+      color: white;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: none;
+      background: linear-gradient(90deg, #2563eb, #4f46e5);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.1s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.5);
+      font-size: 0.95rem;
+      box-shadow: 0 12px 30px rgba(37,99,235,0.45);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
 
-      <h1 class="hero-title">
-        Un <span>auto pensado</span> para cada momento de tu vida.
-      </h1>
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    .hero-cta-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.7);
+      box-shadow: 0 18px 40px rgba(37,99,235,0.6);
+    }
 
-      <p class="hero-subtitle">
-        0km, usados seleccionados y financiación a medida. Te acompañamos en todo el proceso: elección, papeles, entrega y postventa.
-      </p>
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.75);
+      color: #e5e7eb;
+    .hero-cta-secondary {
+      font-size: 0.92rem;
+      cursor: pointer;
+      color: #e5e7eb;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border-bottom: 1px solid rgba(148,163,184,0.7);
+      padding-bottom: 2px;
+      opacity: 0.9;
+    }
 
-      <div class="hero-badges">
-        <div class="hero-badge">✓ Más de 15 años de trayectoria</div>
-        <div class="hero-badge">✓ Multimarca 0km y usados</div>
-        <div class="hero-badge">✓ Atención 100% personalizada</div>
-      </div>
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: #e5e7eb;
+    .hero-cta-secondary:hover {
+      opacity: 1;
+    }
 
-      <div class="hero-cta">
-        <a href="#contacto" class="hero-cta-main">
-          🚗 Encontrá tu próximo auto
-        </a>
-        <a href="#destacados" class="hero-cta-secondary">
-          Ver unidades destacadas
-        </a>
-      </div>
+    .hero-meta {
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
 
-      <div class="hero-meta">
-        <span>San Miguel del Monte</span>
-        <span class="hero-meta-dot"></span>
-        <span>Lunes a Viernes 9–18 · Sábados 9–13</span>
-      </div>
-    </div>
-  </div>
-</section>
+    .hero-meta span strong {
+      color: #e5e7eb;
+    }
+
+    .hero-right {
+      align-self: stretch;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .hero-stats-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 16px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-stats-title {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero-stat {
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: var(--card-soft);
+      border: 1px solid rgba(148,163,184,0.4);
+      text-align: left;
+    }
+
+    .hero-stat-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    .hero-meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #6b7280;
+    }
+
     /* ======================= SECCIONES GENERALES ======================= */
     main {
+      position: relative;
+      z-index: 2;
       background: transparent;
     }
 
     .section {
+      padding: 70px 16px;
       padding: 60px 20px;
       position: relative;
       z-index: 2;
     }
 
     .section-inner {
+      max-width: 1180px;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .section-shell {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 32px;
+      backdrop-filter: blur(20px);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 26px;
       background: rgba(255, 255, 255, 0.96);
       border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: 18px;
@@ -386,6 +482,8 @@
     }
 
     .section-title {
+      font-size: 1.7rem;
+      font-weight: 600;
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 20px;
@@ -394,13 +492,40 @@
     }
 
     .section-subtitle {
+      font-size: 0.9rem;
       text-align: center;
       font-size: 1rem;
       color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* ======================= BLOQUE POR QUÉ MAUREGUI ======================= */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 6px;
+    }
+
+    .feature-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 16px 16px 14px;
+      font-size: 0.9rem;
       max-width: 700px;
       margin: 0 auto 40px;
     }
 
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-body {
+      color: var(--text-muted);
+      font-size: 0.86rem;
     .section-light,
     .section-gray {
       background: transparent;
@@ -409,26 +534,39 @@
     /* ======================= NOSOTROS ======================= */
     .nosotros-grid {
       display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 28px;
       grid-template-columns: 2fr 1fr;
       gap: 30px;
       align-items: start;
     }
 
     .nosotros-text p {
+      margin-bottom: 14px;
       margin-bottom: 16px;
       line-height: 1.6;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nosotros-text p strong {
+      color: #e5e7eb;
     }
 
     .nosotros-list {
       list-style: none;
       padding-left: 0;
+      margin-top: 6px;
     }
 
     .nosotros-list li {
+      margin-bottom: 8px;
+      padding-left: 18px;
       margin-bottom: 10px;
       padding-left: 20px;
       position: relative;
       color: var(--text-muted);
+      font-size: 0.9rem;
       font-size: 0.98rem;
     }
 
@@ -436,6 +574,8 @@
       content: "•";
       position: absolute;
       left: 0;
+      color: #60a5ff;
+      font-size: 1.1rem;
       color: var(--primary);
       font-size: 1.2rem;
       top: -2px;
@@ -444,17 +584,27 @@
     .nosotros-side {
       display: flex;
       flex-direction: column;
+      gap: 14px;
+      align-items: stretch;
       gap: 20px;
       align-items: center;
     }
 
     .nosotros-img {
       width: 100%;
+      border-radius: var(--radius-md);
       border-radius: 10px;
       object-fit: cover;
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.55);
     }
 
     .nosotros-box {
+      background: rgba(15, 23, 42, 0.93);
+      border-radius: var(--radius-md);
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(148,163,184,0.45);
+      font-size: 0.9rem;
       background: #ffffff;
       border-radius: 10px;
       padding: 20px;
@@ -463,13 +613,17 @@
     }
 
     .nosotros-box h3 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
       font-size: 1.1rem;
       margin-bottom: 8px;
     }
 
     .nosotros-box p {
+      font-size: 0.86rem;
       font-size: 0.95rem;
       color: var(--text-muted);
+      margin-bottom: 4px;
     }
 
     /* ======================= DESTACADOS (CARRUSEL) ======================= */
@@ -478,29 +632,17 @@
       max-width: 900px;
       margin: 0 auto;
       overflow: hidden;
+      border-radius: var(--radius-md);
+      background: #020617;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(148,163,184,0.45);
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
       background: #ffffff;
     }
 
     .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-
-    .carousel-item {
-      min-width: 100%;
-      box-sizing: border-box;
-      position: relative;
-      height: 0;
-      padding-top: 56.25%;
-      overflow: hidden;
-    }
-
-    .carousel-item img {
-      position: absolute;
-      top: 0;
-      left: 0;
+@@ -541,45 +428,47 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -509,28 +651,40 @@
 
     .carousel-caption {
       position: absolute;
+      left: 20px;
+      bottom: 18px;
+      background: rgba(15, 23, 42, 0.82);
       left: 50%;
       bottom: 16px;
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.65);
       color: #ffffff;
+      padding: 8px 14px;
       padding: 8px 16px;
       border-radius: 999px;
+      font-size: 0.86rem;
       font-size: 0.9rem;
       font-weight: 500;
+      max-width: 70%;
       max-width: 80%;
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      border: 1px solid rgba(148,163,184,0.5);
     }
 
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.72);
       background: rgba(0, 0, 0, 0.5);
       color: #ffffff;
+      border: 1px solid rgba(148,163,184,0.6);
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
       border: none;
       border-radius: 50%;
       width: 36px;
@@ -539,25 +693,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 1.1rem;
       font-size: 1.2rem;
       z-index: 2;
     }
 
     .carousel-btn:hover {
+      background: rgba(15, 23, 42, 0.95);
       background: rgba(0, 0, 0, 0.7);
     }
 
     .carousel-btn.prev {
-      left: 10px;
-    }
-
-    .carousel-btn.next {
-      right: 10px;
-    }
-
+@@ -593,16 +482,17 @@
     .carousel-dots {
       position: absolute;
       bottom: 10px;
+      right: 16px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -565,52 +716,55 @@
     }
 
     .carousel-dot {
+      width: 7px;
+      height: 7px;
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      background: rgba(248,250,252,0.55);
       background: rgba(255,255,255,0.6);
       cursor: pointer;
     }
 
-    .carousel-dot.active {
-      background: #ffffff;
-    }
-
-    /* ======================= CARRUSEL FINANCIACIÓN ======================= */
-    .finan-wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+@@ -618,13 +508,12 @@
 
     .finan-carousel {
       position: relative;
+      max-width: 720px;
+      margin: 0 auto 28px auto;
       max-width: 700px;
       margin: 0 auto 35px auto;
       overflow: hidden;
+      border-radius: var(--radius-md);
+      background: #020617;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(148,163,184,0.45);
       border-radius: 14px;
       background: #ffffff;
       box-shadow: 0 6px 20px rgba(0,0,0,0.09);
     }
 
     .finan-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-
+@@ -635,40 +524,41 @@
     .finan-item {
       min-width: 100%;
       box-sizing: border-box;
+      padding: 26px 26px 28px 26px;
+      text-align: left;
       padding: 28px 24px 30px 24px;
       text-align: center;
     }
 
     .finan-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
       font-size: 1.4rem;
       margin-bottom: 8px;
       color: var(--primary-dark);
     }
 
     .finan-item p {
+      font-size: 0.9rem;
       font-size: 0.95rem;
       color: var(--text-muted);
     }
@@ -619,8 +773,13 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.72);
       background: rgba(0, 0, 0, 0.55);
       color: #ffffff;
+      border: 1px solid rgba(148,163,184,0.6);
+      border-radius: 999px;
+      width: 32px;
+      height: 32px;
       border: none;
       border-radius: 50%;
       width: 34px;
@@ -629,38 +788,38 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1rem;
       font-size: 1.1rem;
       z-index: 2;
     }
 
     .finan-btn:hover {
+      background: rgba(15, 23, 42, 0.95);
       background: rgba(0, 0, 0, 0.75);
     }
 
     .finan-btn.prev {
-      left: 10px;
-    }
-
-    .finan-btn.next {
-      right: 10px;
-    }
-
-    .finan-dots {
+@@ -683,53 +573,112 @@
       display: flex;
       justify-content: center;
       gap: 6px;
+      margin-top: 6px;
       margin-top: 10px;
     }
 
     .finan-dot {
+      width: 7px;
+      height: 7px;
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      background: rgba(148,163,184,0.6);
       background: rgba(0,0,0,0.18);
       cursor: pointer;
     }
 
     .finan-dot.active {
+      background: #ffffff;
       background: var(--primary);
     }
 
@@ -684,6 +843,8 @@
     }
 
     .btn-cotizador {
+      padding: 13px 24px;
+      font-size: 0.96rem;
       padding: 14px 28px;
       font-size: 1.05rem;
       font-weight: 600;
@@ -691,18 +852,23 @@
 
     .finan-online-link {
       text-align: center;
+      margin-top: 22px;
       margin-top: 25px;
     }
 
     .finan-online-note {
+      font-size: 0.85rem;
       font-size: 0.9rem;
       color: var(--text-muted);
       margin-top: 6px;
     }
 
     /* ======================= CONTACTO / TU FUTURO AUTO ======================= */
+    .contact-layout {
     .contact-grid {
       display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+      gap: 28px;
       grid-template-columns: 1.2fr 1.3fr;
       gap: 30px;
       align-items: start;
@@ -750,52 +916,59 @@
 
     .contact-hero {
       position: relative;
+      border-radius: var(--radius-md);
       border-radius: 18px;
       overflow: hidden;
+      margin-bottom: 22px;
+      height: 240px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(148,163,184,0.55);
       margin-bottom: 32px;
       height: 260px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
     .contact-hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .contact-hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+@@ -749,9 +698,8 @@
       height: 100%;
       background: linear-gradient(
         to right,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.7),
+        rgba(15, 23, 42, 0.1)
         rgba(0, 0, 0, 0.7),
         rgba(0, 0, 0, 0.25)
       );
     }
 
-    .contact-hero-text {
-      position: relative;
-      z-index: 2;
-      color: #ffffff;
-      height: 100%;
+@@ -763,222 +711,183 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 18px 22px;
       padding: 20px 26px;
       max-width: 520px;
     }
 
     .contact-hero-text h2 {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
+      font-size: 1.45rem;
+      margin-bottom: 6px;
     }
 
+    .contact-hero-text p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .contact-info p {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-info strong {
+      color: #e5e7eb;
     .contact-hero-text p {
       font-size: 0.98rem;
       color: #f0f0f0;
@@ -803,14 +976,20 @@
 
     .contact-logo-box {
       width: 100%;
+      height: 210px;
       height: 240px;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 10px;
       margin-top: 20px;
     }
 
     .contact-logo-box img {
+      width: 82%;
+      max-width: 340px;
+      opacity: 0.96;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
       width: 80%;
       max-width: 360px;
       opacity: 0.92;
@@ -818,18 +997,61 @@
       object-fit: contain;
     }
 
+    .contact-form {
+      background: rgba(15, 23, 42, 0.96);
+      padding: 20px 20px 18px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.86rem;
+      margin-bottom: 3px;
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 9px;
+      border: 1px solid rgba(148,163,184,0.65);
+      margin-bottom: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .contact-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
     /* ======================= FOOTER ======================= */
     footer {
       padding: 18px 20px;
+      background: #020617;
+      color: #9ca3af;
       background: #111111;
       color: #bbbbbb;
       text-align: center;
+      font-size: 0.82rem;
       font-size: 0.85rem;
       position: relative;
       z-index: 3;
+      border-top: 1px solid rgba(148,163,184,0.4);
     }
 
     .footer-designed {
+      margin-top: 6px;
       margin-top: 8px;
       display: flex;
       align-items: center;
@@ -850,6 +1072,10 @@
     /* ========= BURBUJA WHATSAPP ========= */
     .whatsapp-bubble {
       position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 56px;
+      height: 56px;
       bottom: 20px;
       right: 20px;
       width: 60px;
@@ -859,12 +1085,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       z-index: 10000;
       text-decoration: none;
     }
 
     .whatsapp-bubble svg {
+      width: 30px;
+      height: 30px;
       width: 32px;
       height: 32px;
       fill: #ffffff;
@@ -872,32 +1101,50 @@
 
     .whatsapp-bubble:hover {
       transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
       box-shadow: 0 6px 18px rgba(0,0,0,0.3);
     }
 
     /* ======================= RESPONSIVE ======================= */
     @media (max-width: 992px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: flex-start;
+      }
+
+      .hero-right {
+        justify-content: flex-start;
       .contact-grid {
         grid-template-columns: 1fr;
       }
 
+      .hero-stats-card {
+        max-width: 100%;
       .nosotros-grid {
         grid-template-columns: 1fr;
       }
 
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       .nosotros-side {
         max-width: 500px;
         margin: 0 auto;
       }
 
+      .nosotros-grid {
+        grid-template-columns: minmax(0, 1fr);
       .contact-logo-box {
         height: 200px;
       }
 
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
       .hero-title {
         font-size: 2.1rem;
       }
 
+      .contact-logo-box {
+        height: 190px;
       .hero-content {
         align-items: flex-start;
       }
@@ -918,18 +1165,24 @@
 
       .navbar-links {
         position: absolute;
+        top: 56px;
         top: 58px;
         right: 0;
         width: 100%;
+        background: rgba(15, 23, 42, 0.97);
         background: var(--primary);
         display: none;
         flex-direction: column;
         text-align: center;
+        padding: 12px 0 14px;
+        gap: 14px;
+        border-bottom: 1px solid rgba(148,163,184,0.4);
         padding: 15px 0;
         gap: 15px;
       }
 
       .navbar-links li a {
+        font-size: 1rem;
         font-size: 1.1rem;
       }
 
@@ -938,67 +1191,68 @@
       }
 
       .hero {
+        max-height: none;
         height: 90vh;
       }
 
+      .hero-inner {
+        padding-top: 14px;
       .hero-content {
         align-items: flex-start;
         text-align: left;
       }
 
       .hero-title {
+        font-size: 2rem;
         font-size: 1.8rem;
       }
 
       .hero-subtitle {
+        font-size: 0.92rem;
+      }
+
+      .hero-stats-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
         font-size: 0.95rem;
       }
 
+      .features-grid {
+        grid-template-columns: minmax(0,1fr);
       .hero-badges {
         gap: 8px;
       }
 
       .contact-hero {
+        height: 210px;
         height: 220px;
       }
 
       .contact-hero-text h2 {
+        font-size: 1.3rem;
         font-size: 1.6rem;
       }
     }
   </style>
-</head>
-<body>
-
-  <!-- ======================= VIDEO GLOBAL DE FONDO hero7.mp4 ======================= -->
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="hero7.mp4" type="video/mp4">
-  </video>
-  <div class="bg-video-overlay"></div>
-
+@@ -994,10 +903,7 @@
   <!-- ======================= NAVBAR ======================= -->
   <nav class="navbar">
     <div class="navbar-container">
+      <div class="navbar-left">
+        <img src="mauregui-logo.png" alt="Mauregui Automotores" class="navbar-logo">
+        <span class="navbar-brand-text">Multimarca · 0km &amp; Usados</span>
+      </div>
       <div class="navbar-left"></div>
 
       <ul class="navbar-links" id="navbarLinks">
         <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#destacados">Destacados</a></li>
-        <li><a href="#financiacion">Financiación</a></li>
-        <li><a href="#contacto">Tu futuro auto</a></li>
-      </ul>
-
-      <div class="navbar-toggle" id="navbarToggle">☰</div>
-    </div>
-  </nav>
-
-  <!-- ======================= HERO ROTATIVO CON FADE ======================= -->
-  <section class="hero">
-    <video id="videoA" class="hero-video" autoplay muted playsinline></video>
-    <video id="videoB" class="hero-video" autoplay muted playsinline></video>
+@@ -1017,129 +923,67 @@
 
     <div class="overlay"></div>
 
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-chip-row">
+          <span class="hero-chip">Mauregui Automotores · San Miguel del Monte</span>
     <div class="hero-content">
       <div class="hero-inner">
         <div class="hero-pill">
@@ -1011,25 +1265,55 @@
         </h1>
 
         <p class="hero-subtitle">
+          0km, usados seleccionados y financiación a medida. Te acompañamos en todo el proceso:
+          elección, papeles, entrega y postventa.
           0km, usados seleccionados y financiación a medida. Te acompañamos en todo el proceso: elección, papeles, entrega y postventa.
         </p>
 
         <div class="hero-badges">
+          <span class="hero-badge">✔ Más de 15 años de trayectoria</span>
+          <span class="hero-badge">✔ Multimarca 0km y usados</span>
+          <span class="hero-badge">✔ Atención 100% personalizada</span>
           <div class="hero-badge">✓ Más de 15 años de trayectoria</div>
           <div class="hero-badge">✓ Multimarca 0km y usados</div>
           <div class="hero-badge">✓ Atención 100% personalizada</div>
         </div>
 
+        <div class="hero-cta-row">
+          <a href="#contacto" class="btn-primary">
         <div class="hero-cta">
           <a href="#contacto" class="hero-cta-main">
             🚗 Encontrá tu próximo auto
           </a>
+          <a href="#destacados" class="btn-ghost">
           <a href="#destacados" class="hero-cta-secondary">
             Ver unidades destacadas
           </a>
         </div>
 
         <div class="hero-meta">
+          <span><strong>San Miguel del Monte</strong> · Santiago Javier Petracchi 863</span>
+          <span><strong>Horarios:</strong> Lun a Vie 9–18 · Sáb 9–13</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-stats-card">
+          <div class="hero-stats-title">Lo que más eligen nuestros clientes</div>
+          <div class="hero-stats-grid">
+            <div class="hero-stat">
+              <div class="hero-stat-value">0 km</div>
+              <div class="hero-stat-label">Entrega programada</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">Usados</div>
+              <div class="hero-stat-label">Seleccionados y chequeados</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">+ Financiación</div>
+              <div class="hero-stat-label">Créditos y planes a medida</div>
+            </div>
+          </div>
           <span>San Miguel del Monte</span>
           <span class="hero-meta-dot"></span>
           <span>Lunes a Viernes 9–18 · Sábados 9–13</span>
@@ -1039,7 +1323,57 @@
   </section>
 
   <main>
+    <!-- ======================= BLOQUE POR QUÉ MAUREGUI (NUEVO ORDEN) ======================= -->
+    <section class="section">
+      <div class="section-inner section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">¿Por qué Mauregui Automotores?</h2>
+            <p class="section-subtitle">
+              No se trata solo de vender autos: se trata de ayudarte a elegir el vehículo perfecto
+              para tu rutina, tu familia y tu proyecto.
+            </p>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-title">Experiencia real</div>
+            <div class="feature-body">
+              Más de 15 años en el mercado automotor, acompañando a clientes de San Miguel del Monte
+              y la región en la compra y venta de su vehículo.
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-title">Transparencia y confianza</div>
+            <div class="feature-body">
+              Operaciones claras, documentación completa y vehículos seleccionados con verificación previa.
+              Queremos que compres tranquilo.
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-title">Soluciones a medida</div>
+            <div class="feature-body">
+              Créditos prendarios, bancos, cheques y planes combinados. Armamos juntos la financiación
+              que mejor se adapte a tu realidad.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ======================= NOSOTROS ======================= -->
+    <section id="nosotros" class="section">
+      <div class="section-inner section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Nosotros</h2>
+            <p class="section-subtitle">
+              Más de 15 años acompañando a nuestros clientes en la compra y venta de su vehículo,
+              con atención personalizada y un fuerte compromiso con la transparencia.
+            </p>
+          </div>
+        </div>
     <section id="nosotros" class="section section-light">
       <div class="section-inner">
         <h2 class="section-title">Nosotros</h2>
@@ -1051,6 +1385,9 @@
         <div class="nosotros-grid">
           <div class="nosotros-text">
             <p>
+              En <strong>Mauregui Automotores</strong> somos una agencia
+              <strong>multimarca</strong> especializada en vehículos
+              <strong>0 km y usados seleccionados</strong>. Nuestro objetivo es que encuentres
               En <strong>Mauregui Automotores</strong> somos una agencia 
               <strong>multimarca</strong> especializada en vehículos 
               <strong>0 km y usados seleccionados</strong>. Nuestro objetivo es que encuentres 
@@ -1058,36 +1395,37 @@
             </p>
 
             <p>
+              Nuestro equipo te asesora en todo el proceso: desde la elección del vehículo,
+              la financiación y la documentación, hasta la entrega final. Trabajamos con seriedad
               Nuestro equipo te asesora en todo el proceso: desde la elección del vehículo, 
               la financiación y la documentación, hasta la entrega final. Trabajamos con seriedad 
               y cercanía para que tu experiencia de compra sea segura y simple.
             </p>
 
-            <ul class="nosotros-list">
-              <li>Asesoramiento profesional en la elección de tu vehículo.</li>
-              <li>Créditos personalizados y planes de financiación.</li>
-              <li>Gestión completa de trámites y documentación.</li>
-              <li>Usados seleccionados con verificación previa.</li>
-              <li>Toma de usados en parte de pago.</li>
-            </ul>
-          </div>
-
-          <div class="nosotros-side">
+@@ -1156,7 +1000,7 @@ <h2 class="section-title">Nosotros</h2>
             <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img">
 
             <div class="nosotros-box">
+              <h3>¿Qué nos diferencia?</h3>
               <h3>¿Por qué elegirnos?</h3>
               <p><strong>✔ Experiencia real:</strong> más de 15 años en el mercado automotor.</p>
               <p><strong>✔ Confianza:</strong> operaciones transparentes y asesoramiento claro.</p>
               <p><strong>✔ Variedad:</strong> amplia gama de marcas, modelos y opciones de financiación.</p>
-              <p><strong>✔ Cercanía:</strong> atención personalizada para cada necesidad.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+@@ -1168,17 +1012,12 @@ <h3>¿Qué nos diferencia?</h3>
     </section>
 
     <!-- ======================= DESTACADOS (CARRUSEL) ======================= -->
+    <section id="destacados" class="section">
+      <div class="section-inner section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Destacados</h2>
+            <p class="section-subtitle">
+              Un vistazo a algunas de las unidades destacadas que podés encontrar en Mauregui Automotores.
+            </p>
+          </div>
+          <a href="#contacto" class="btn-ghost">Quiero que me avisen por unidades similares</a>
+        </div>
     <section id="destacados" class="section section-gray">
       <div class="section-inner">
         <h2 class="section-title">Destacados</h2>
@@ -1097,46 +1435,21 @@
 
         <div class="destacados-carousel" id="destacadosCarousel">
           <button class="carousel-btn prev" id="carouselPrev">&#10094;</button>
-
-          <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-item">
-              <img src="destacado1.png" alt="Destacado 1">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado2.png" alt="Destacado 2">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado3.png" alt="Destacado 3">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado4.png" alt="Destacado 4">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado5.png" alt="Destacado 5">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado6.png" alt="Destacado 6">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-            <div class="carousel-item">
-              <img src="destacado7.png" alt="Destacado 7">
-              <div class="carousel-caption">Unidad destacada</div>
-            </div>
-          </div>
-
-          <button class="carousel-btn next" id="carouselNext">&#10095;</button>
-
-          <div class="carousel-dots" id="carouselDots"></div>
-        </div>
-      </div>
+@@ -1222,37 +1061,33 @@ <h2 class="section-title">Destacados</h2>
     </section>
 
     <!-- ===================  FINANCIACIÓN – CARRUSEL ====================== -->
+    <section id="financiacion" class="section">
+      <div class="section-inner section-shell finan-wrapper">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">💳 Nuestra financiación</h2>
+            <p class="section-subtitle">
+              Trabajamos con varias alternativas de crédito para que puedas financiar tu auto.
+              En la web te mostramos las opciones generales y los detalles los vemos juntos en la agencia.
+            </p>
+          </div>
+        </div>
     <section id="financiacion" class="section section-light">
       <div class="section-inner finan-wrapper">
         <h2 class="section-title">💳 Nuestra Financiación</h2>
@@ -1151,6 +1464,7 @@
 
           <div class="finan-track" id="finanTrack">
             <div class="finan-item">
+              <h3>Créditos prendarios</h3>
               <h3>Créditos Prendarios</h3>
               <p>Financiación clásica sobre el vehículo. Consultá montos y plazos en la agencia.</p>
             </div>
@@ -1159,26 +1473,21 @@
               <p>Líneas especiales para 0 km y usados seleccionados. Condiciones vigentes en salón.</p>
             </div>
             <div class="finan-item">
+              <h3>Financiación con cheques</h3>
               <h3>Financiación con Cheques</h3>
               <p>Alternativa para empresas, productores y autónomos. Armamos el plan a medida.</p>
             </div>
             <div class="finan-item">
+              <h3>Planes a medida</h3>
               <h3>Planes a Medida</h3>
               <p>Combinamos distintas opciones para adaptarnos a tu situación puntual.</p>
             </div>
           </div>
-
-          <button class="finan-btn next" id="finanNext">&#10095;</button>
-        </div>
-
-        <div class="finan-dots" id="finanDots"></div>
-
-        <!-- LINK LLAMATIVO AL COTIZADOR EXTERNO -->
-        <div class="finan-online-link">
-          <a href="https://www.cotizadorcreditcar.com.ar" target="_blank" class="btn-primary btn-cotizador">
+@@ -1268,67 +1103,56 @@ <h3>Planes a medida</h3>
             🚗 Tu auto en cuotas online
           </a>
           <p class="finan-online-note">
+            Abrimos un cotizador externo para que veas una referencia de cuotas.
             Abrimos un cotizador externo para que veas una referencia de cuotas.  
             Los planes finales se confirman siempre en Mauregui Automotores.
           </p>
@@ -1187,6 +1496,14 @@
     </section>
 
     <!-- ======================= CONTACTO / BUSCAR TU FUTURO AUTO ======================= -->
+    <section id="contacto" class="section">
+      <div class="section-inner section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Tu futuro auto</h2>
+            <p class="section-subtitle">
+              Contanos qué estás buscando y un especialista de Mauregui Automotores te va a contactar
+              para ayudarte a encontrar la mejor opción.
     <section id="contacto" class="section section-light">
       <div class="section-inner">
         <!-- MINI HERO CON hero6.mp4 -->
@@ -1202,25 +1519,57 @@
           </div>
         </div>
 
+        <div class="contact-layout">
+          <div>
+            <!-- MINI HERO CON hero6.mp4 -->
+            <div class="contact-hero">
+              <video src="hero6.mp4" class="contact-hero-video" autoplay muted loop playsinline></video>
+              <div class="contact-hero-overlay"></div>
+              <div class="contact-hero-text">
+                <h2>¿Querés que te busquemos tu próximo auto?</h2>
+                <p>
+                  Dejanos tus datos y qué estás buscando. Te contactamos para mostrarte opciones
+                  acordes a tu presupuesto, uso y preferencias.
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-info">
+              <p><strong>Dirección</strong><br>
+                Santiago Javier Petracchi 863, San Miguel del Monte, Provincia de Buenos Aires</p>
         <div class="contact-grid">
           <div class="contact-info">
             <p><strong>Dirección</strong><br>
               Santiago Javier Petracchi 863, San Miguel del Monte, Provincia de Buenos Aires</p>
 
+              <p><strong>Teléfono / WhatsApp</strong><br>
+                +54 9 2226 52-2917</p>
             <p><strong>Teléfono / WhatsApp</strong><br>
               +54 9 2226 52-2917</p>
 
+              <p><strong>Email</strong><br>
+                info@maureguiautomotores.com</p>
             <p><strong>Email</strong><br>
               info@maureguiautomotores.com</p>
 
+              <p><strong>Horarios</strong><br>
+                Lunes a Viernes – 9:00 a 18:00<br>
+                Sábados – 9:00 a 13:00</p>
             <p><strong>Horarios</strong><br>
               Lunes a Viernes – 9:00 a 18:00<br>
               Sábados – 9:00 a 13:00</p>
 
+              <p style="margin-top:12px; font-weight:500;">
+                Completá el formulario y luego un especialista te contactará para asesorarte.
+              </p>
             <p style="margin-top:12px; font-weight:500;">
               Completá el formulario y luego un especialista te contactará para asesorarte.
             </p>
 
+              <!-- LOGO GRANDE DE MAUREGUI -->
+              <div class="contact-logo-box">
+                <img src="mauregui-logo.png" alt="Mauregui Automotores">
+              </div>
             <!-- LOGO GRANDE DE MAUREGUI -->
             <div class="contact-logo-box">
               <img src="mauregui-logo.png" alt="Mauregui Automotores">
@@ -1232,261 +1581,16 @@
             <label for="nombre">Tu nombre</label>
             <input id="nombre" type="text" name="nombre" placeholder="Tu nombre y apellido">
 
-            <label for="marca">Marca</label>
-            <input id="marca" type="text" name="marca" placeholder="Ej: Toyota, Volkswagen, Chevrolet">
-
-            <label for="modelo">Modelo</label>
-            <input id="modelo" type="text" name="modelo" placeholder="Ej: Corolla XEi, Amarok, Onix">
-
-            <label for="tipo">Tipo de vehículo</label>
-            <input id="tipo" type="text" name="tipo" placeholder="Ej: SUV, sedán, hatchback, pick-up, utilitario">
-
-            <label for="anio">Año</label>
-            <input id="anio" type="number" name="anio" placeholder="Ej: 2018">
-
-            <label for="valorEstimado">Valor estimado</label>
-            <input id="valorEstimado" type="number" name="valorEstimado" placeholder="Presupuesto aproximado o valor de tu usado">
-
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" type="tel" name="telefono" placeholder="Tu número de contacto">
-
-            <label for="comentarios">Comentarios</label>
-            <textarea id="comentarios" name="comentarios" placeholder="Contanos si tenés alguna preferencia: tipo de uso, combustible, caja, etc."></textarea>
-
-            <button type="button" class="btn-primary" id="contactSubmit">Quiero que me contacten</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
+@@ -1363,7 +1187,7 @@ <h2>¿Querés que te busquemos tu próximo auto?</h2>
   <footer>
     © <span id="year"></span> Mauregui Automotores · Todos los derechos reservados.
 
+    <div class="footer-designed">
     <div class="footer-designed" style="margin-top:8px;">
       <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
         Diseñado por UmanoAI
         <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
-          <img src="umanoai (1).png" alt="UmanoAI" style="height:18px;">
-        </a>
-      </p>
-    </div>
-  </footer>
-
-  <!-- BURBUJA WHATSAPP -->
-  <a href="https://wa.me/5492226522917"
-     class="whatsapp-bubble"
-     target="_blank"
-     aria-label="WhatsApp Mauregui Automotores">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16 3C9.383 3 4 8.149 4 14.5c0 2.55.86 4.91 2.34 6.83L5 27l5.86-1.2A12.6 12.6 0 0 0 16 26c6.617 0 12-5.149 12-11.5S22.617 3 16 3zm0 2c5.523 0 10 4.29 10 9.5S21.523 24 16 24a10.6 10.6 0 0 1-4.7-1.1l-.34-.17-3.48.71.72-3.26-.22-.33A7.87 7.87 0 0 1 6 14.5C6 9.29 10.477 5 16 5zm-3.07 4.5c-.25-.01-.52.01-.81.08-.42.11-.96.49-1.1.96-.28.9-.72 2.78.86 4.82 1.57 2.03 3.38 2.9 4.34 3.26.45.17 1.01.13 1.35.08.41-.06 1.25-.51 1.43-1.01.18-.49.18-.9.13-.98-.06-.08-.2-.13-.42-.24-.23-.11-1.36-.67-1.57-.75-.21-.08-.36-.11-.51.11-.15.22-.59.75-.72.91-.13.15-.27.17-.5.06-.23-.11-.96-.36-1.83-1.16-.68-.61-1.14-1.37-1.27-1.6-.13-.23-.01-.35.1-.46.1-.1.23-.27.34-.4.11-.13.15-.22.23-.37.08-.15.05-.28-.01-.4-.06-.11-.53-1.29-.73-1.76-.18-.44-.37-.45-.53-.46z"/>
-    </svg>
-  </a>
-
-  <!-- ======================= SCRIPTS ======================= -->
-  <script>
-    // Año dinámico en el footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Toggle menú mobile
-    const toggle = document.getElementById("navbarToggle");
-    const links = document.getElementById("navbarLinks");
-
-    toggle.addEventListener("click", () => {
-      const isVisible = links.style.display === "flex";
-      links.style.display = isVisible ? "none" : "flex";
-    });
-
-    // ================== HERO ROTATIVO ==================
-    const videos = [
-      "hero1.mp4",
-      "hero2.mp4",
-      "hero3.mp4",
-      "hero4.mp4",
-      "hero5.mp4"
-    ];
-
-    let index = 0;
-    const duration = 7000;
-    const videoA = document.getElementById("videoA");
-    const videoB = document.getElementById("videoB");
-
-    videoA.src = videos[index];
-    videoA.style.opacity = 1;
-    videoB.style.opacity = 0;
-
-    function rotate() {
-      index = (index + 1) % videos.length;
-
-      if (videoA.style.opacity === "1") {
-        videoB.src = videos[index];
-        videoB.play();
-
-        videoA.style.opacity = 0;
-        videoB.style.opacity = 1;
-      } else {
-        videoA.src = videos[index];
-        videoA.play();
-
-        videoA.style.opacity = 1;
-        videoB.style.opacity = 0;
-      }
-    }
-
-    setInterval(rotate, duration);
-
-    // ================== CARRUSEL DESTACADOS ==================
-    const track = document.getElementById('carouselTrack');
-    const items = document.querySelectorAll('.carousel-item');
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    const dotsContainer = document.getElementById('carouselDots');
-
-    let currentSlide = 0;
-
-    items.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('carousel-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentSlide = i;
-        updateCarousel();
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.carousel-dot');
-
-    function updateCarousel() {
-      const width = items[0].clientWidth;
-      track.style.transform = `translateX(-${currentSlide * width}px)`;
-
-      dots.forEach((d, i) => {
-        d.classList.toggle('active', i === currentSlide);
-      });
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentSlide = (currentSlide - 1 + items.length) % items.length;
-      updateCarousel();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentSlide = (currentSlide + 1) % items.length;
-      updateCarousel();
-    });
-
-    window.addEventListener('resize', updateCarousel);
-
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % items.length;
-      updateCarousel();
-    }, 8000);
-
-    // ========== CARRUSEL FINANCIACIÓN ==========
-    const finanTrack = document.getElementById('finanTrack');
-    const finanItems = document.querySelectorAll('.finan-item');
-    const finanPrev = document.getElementById('finanPrev');
-    const finanNext = document.getElementById('finanNext');
-    const finanDotsContainer = document.getElementById('finanDots');
-
-    let finanCurrent = 0;
-
-    finanItems.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('finan-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        finanCurrent = i;
-        updateFinanCarousel();
-      });
-      finanDotsContainer.appendChild(dot);
-    });
-
-    const finanDots = document.querySelectorAll('.finan-dot');
-
-    function updateFinanCarousel() {
-      const width = finanItems[0].clientWidth;
-      finanTrack.style.transform = `translateX(-${finanCurrent * width}px)`;
-
-      finanDots.forEach((d, i) => {
-        d.classList.toggle('active', i === finanCurrent);
-      });
-    }
-
-    finanPrev.addEventListener('click', () => {
-      finanCurrent = (finanCurrent - 1 + finanItems.length) % finanItems.length;
-      updateFinanCarousel();
-    });
-
-    finanNext.addEventListener('click', () => {
-      finanCurrent = (finanCurrent + 1) % finanItems.length;
-      updateFinanCarousel();
-    });
-
-    window.addEventListener('resize', updateFinanCarousel);
-
-    // ========== FORMULARIO "TU FUTURO AUTO" ==========
-    const CONTACT_ENDPOINT = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f0637f326ee14691a60251bb3dd00978/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=7DaHMaLcyJtwzzX_Id0YN5TGMliWRBlLNBAuD9CFd6I";
-
-    const contactForm = document.getElementById('contactForm');
-    const contactSubmit = document.getElementById('contactSubmit');
-
-    contactSubmit.addEventListener('click', async () => {
-      const nombre = document.getElementById('nombre').value.trim();
-      const marca = document.getElementById('marca').value.trim();
-      const modelo = document.getElementById('modelo').value.trim();
-      const tipo = document.getElementById('tipo').value.trim();
-      const anio = document.getElementById('anio').value.trim();
-      const valorEstimado = document.getElementById('valorEstimado').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const comentarios = document.getElementById('comentarios').value.trim();
-
-      const tieneMarcaYModelo = marca && modelo;
-      const tieneTipo = tipo !== '';
-
-      if (!nombre || !telefono || (!tieneMarcaYModelo && !tieneTipo)) {
-        alert('Completá Nombre, Teléfono y al menos Marca + Modelo o el Tipo de vehículo (SUV, sedán, etc).');
-        return;
-      }
-
-      const payload = {
-        nombre,
-        marca,
-        modelo,
-        tipo,
-        anio,
-        valorEstimado,
-        telefono,
-        comentarios,
-        origen: 'web_mauregui_busqueda_auto',
-        fecha: new Date().toISOString()
-      };
-
-      try {
-        contactSubmit.disabled = true;
-        contactSubmit.textContent = 'Enviando...';
-
-        const res = await fetch(CONTACT_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (!res.ok) {
-          throw new Error('Error HTTP ' + res.status);
-        }
-
-        alert('¡Gracias! Recibimos tu búsqueda y un especialista te va a contactar a la brevedad.');
-        contactForm.reset();
-      } catch (err) {
-        console.error(err);
-        alert('Ocurrió un problema al enviar la solicitud. Probá nuevamente o escribinos por WhatsApp.');
-      } finally {
-        contactSubmit.disabled = false;
-        contactSubmit.textContent = 'Quiero que me contacten';
-      }
-    });
+@@ -1590,4 +1414,3 @@ <h2>¿Querés que te busquemos tu próximo auto?</h2>
   </script>
 </body>
 </html>
