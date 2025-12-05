@@ -66,14 +66,22 @@
     /* ======================= NAVBAR ======================= */
     .navbar {
       width: 100%;
-      background-color: var(--primary);
+      /* color más moderno: degradé oscuro + azul */
+      background-image: linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(30, 64, 175, 0.96),
+        rgba(37, 99, 235, 0.96)
+      );
+      backdrop-filter: blur(14px);
       color: white;
       padding: 12px 0;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 9999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 10px rgba(15,23,42,0.45);
+      border-bottom: 1px solid rgba(148,163,184,0.5);
     }
 
     .navbar-container {
@@ -101,11 +109,13 @@
       color: white;
       text-decoration: none;
       font-size: 1.05rem;
+      font-weight: 500;
       transition: 0.2s;
     }
 
     .navbar-links li a:hover {
-      opacity: 0.75;
+      opacity: 0.85;
+      transform: translateY(-1px);
     }
 
     .navbar-toggle {
@@ -170,7 +180,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 22%;
+      /* se adapta mejor a diferentes pantallas */
+      width: clamp(240px, 23vw, 340px);
       height: 100%;
       background: linear-gradient(
         to right,
@@ -181,9 +192,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px 22px;
+      padding: clamp(20px, 3vh, 32px) clamp(18px, 2vw, 26px);
       border-right: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
 
     .hero-side-inner {
@@ -213,14 +224,17 @@
     }
 
     .hero-side-inner h1 {
-      font-size: 1.7rem;
+      font-size: clamp(1.5rem, 1.7vw + 0.8rem, 2.2rem);
       font-weight: 700;
       letter-spacing: 0.03em;
       line-height: 1.25;
+      /* bold azul como pediste */
+      color: var(--primary);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.65);
     }
 
     .hero-lead {
-      font-size: 0.95rem;
+      font-size: clamp(0.9rem, 0.7vw + 0.8rem, 1.05rem);
       opacity: 0.9;
       line-height: 1.5;
     }
@@ -282,8 +296,8 @@
       width: 26%;
       max-width: 320px;
       background: radial-gradient(circle at top left,
-                  rgba(0, 0, 0, 0.75),
-                  rgba(0, 0, 0, 0.55));
+                  rgba(0, 0, 0, 0.80),
+                  rgba(0, 0, 0, 0.60));
       border-radius: 18px;
       padding: 14px 16px 12px;
       z-index: 3;
@@ -318,7 +332,8 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      animation: brand-scroll 22s linear infinite;
+      /* más rápido para que se vean todas las marcas */
+      animation: brand-scroll 12s linear infinite;
       will-change: transform;
     }
 
@@ -838,32 +853,39 @@
     /* ========= BURBUJA WHATSAPP ========= */
     .whatsapp-bubble {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
+      bottom: 22px;
+      right: 22px;
+      width: 72px;   /* un poco más grande */
+      height: 72px;
       border-radius: 50%;
       background: #25d366;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
       z-index: 10000;
       text-decoration: none;
     }
 
     .whatsapp-bubble svg {
-      width: 32px;
-      height: 32px;
+      width: 38px;   /* icono más grande y limpio */
+      height: 38px;
       fill: #ffffff;
+      display: block;
     }
 
     .whatsapp-bubble:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
     /* ======================= RESPONSIVE ======================= */
+    @media (max-width: 1200px) {
+      .hero-side-band {
+        width: clamp(230px, 26vw, 320px);
+      }
+    }
+
     @media (max-width: 992px) {
       .contact-grid {
         grid-template-columns: 1fr;
@@ -881,6 +903,11 @@
       .contact-logo-box {
         height: 200px;
       }
+
+      .hero-side-band {
+        width: clamp(220px, 30vw, 300px);
+        padding: 20px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -897,7 +924,13 @@
         top: 58px;
         right: 0;
         width: 100%;
-        background: var(--primary);
+        /* mismo estilo moderno en mobile */
+        background-image: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0.98),
+          rgba(30, 64, 175, 0.98),
+          rgba(37, 99, 235, 0.98)
+        );
         display: none;
         flex-direction: column;
         text-align: center;
@@ -941,6 +974,13 @@
 
       .contact-hero-text h2 {
         font-size: 1.6rem;
+      }
+
+      .whatsapp-bubble {
+        width: 68px;
+        height: 68px;
+        bottom: 18px;
+        right: 18px;
       }
     }
   </style>
@@ -999,8 +1039,8 @@
       <div class="hero-brand-carousel">
         <div class="hero-brand-track">
           <!-- Primera vuelta -->
-           <img src="logo-ford.png" alt="Chevrolet" class="hero-brand-logo">
-           <div class="hero-brand-divider"></div>
+          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
+          <div class="hero-brand-divider"></div>
           <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo">
           <div class="hero-brand-divider"></div>
           <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo">
