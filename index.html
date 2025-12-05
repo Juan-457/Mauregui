@@ -19,7 +19,6 @@
       --bg-gray: #f5f5f5;
       --text-main: #222222;
       --text-muted: #555555;
-      /* Colores del degradé de secciones (ya no se usan como fondo directo) */
       --section-grad-start: #f0f6ff;
       --section-grad-mid: #dce9ff;
       --section-grad-end: #ffffff;
@@ -359,7 +358,6 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      animation: brand-scroll 10s linear infinite;
       will-change: transform;
     }
 
@@ -381,15 +379,6 @@
         rgba(248, 250, 252, 0.7),
         rgba(248, 250, 252, 0.0)
       );
-    }
-
-    @keyframes brand-scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
     }
 
     /* ======================= SECCIONES GENERALES ======================= */
@@ -865,10 +854,6 @@
       gap: 8px;
     }
 
-    .footer-designed span {
-      color: #dddddd;
-    }
-
     .footer-logo {
       height: 24px;
       width: auto;
@@ -974,17 +959,14 @@
         font-size: 1rem;
       }
 
-      /* en mobile la banda se oculta para que no tape el hero */
       .hero-side-band {
         display: none;
       }
 
-      /* bubble visible en mobile */
       .hero-mobile-bubble {
         display: block;
       }
 
-      /* en mobile la caja de marcas baja y se centra */
       .hero-brand-strip {
         position: static;
         transform: none;
@@ -1005,7 +987,6 @@
         font-size: 1.6rem;
       }
 
-      /* un poco más de aire para que no se vea tan pegado */
       #contacto .section-inner {
         margin-top: 12px;
       }
@@ -1091,7 +1072,7 @@
           <div class="hero-brand-divider"></div>
           <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo">
 
-          <!-- Segunda vuelta duplicada para scroll infinito suave -->
+          <!-- Segunda vuelta duplicada -->
           <div class="hero-brand-divider"></div>
           <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
           <div class="hero-brand-divider"></div>
@@ -1574,6 +1555,34 @@
         contactSubmit.textContent = 'Quiero que me contacten';
       }
     });
+
+    // ========== CARRUSEL INFINITO DE MARCAS ==========
+    const brandTrack = document.querySelector('.hero-brand-track');
+    if (brandTrack) {
+      let brandOffset = 0;
+      const brandSpeed = 0.5; // px por frame aprox
+      const GAP = 24;         // coincide con gap: 24px del CSS
+
+      function stepBrand() {
+        brandOffset -= brandSpeed;
+        brandTrack.style.transform = `translateX(${brandOffset}px)`;
+
+        const first = brandTrack.firstElementChild;
+        if (first) {
+          const firstWidth = first.getBoundingClientRect().width;
+          // cuando el primer elemento salió completo, lo movemos al final
+          if (Math.abs(brandOffset) >= firstWidth + GAP) {
+            brandTrack.appendChild(first);
+            brandOffset += firstWidth + GAP;
+            brandTrack.style.transform = `translateX(${brandOffset}px)`;
+          }
+        }
+        requestAnimationFrame(stepBrand);
+      }
+
+      requestAnimationFrame(stepBrand);
+    }
   </script>
 </body>
 </html>
+
