@@ -50,7 +50,7 @@
       height: 100%;
       object-fit: cover;
       z-index: -3;
-      opacity: 0.4; /* ajustá si lo querés más/menos fuerte */
+      opacity: 0.4;
     }
 
     .bg-video-overlay {
@@ -66,8 +66,6 @@
     /* ======================= NAVBAR ======================= */
     .navbar {
       width: 100%;
-      background-color: var(--primary);
-      /* color más moderno: degradé oscuro + azul */
       background-image: linear-gradient(
         90deg,
         rgba(15, 23, 42, 0.96),
@@ -96,17 +94,11 @@
     }
 
     .navbar-left {
-      position: absolute;
-      left: 20px;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-brand {
       font-weight: 600;
-      letter-spacing: 0.03em;
       font-size: 1.05rem;
+      letter-spacing: .03em;
       white-space: nowrap;
+      color: #e5e7eb;
     }
 
     .navbar-links {
@@ -155,7 +147,7 @@
       height: 100%;
       object-fit: cover;
       transition: opacity 1s ease-in-out;
-      pointer-events: none; /* para no bloquear clics */
+      pointer-events: none;
     }
 
     .overlay {
@@ -179,6 +171,7 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+      pointer-events: none;
     }
 
     .hero-content p {
@@ -186,30 +179,33 @@
       max-width: 640px;
     }
 
-    /* Títulos visibles solo en mobile */
-    .hero-mobile-titles {
+    /* Bubble solo para mobile */
+    .hero-mobile-bubble {
       display: none;
-      text-align: center;
-      padding: 0 16px;
+      background: rgba(15,23,42,0.85);
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+      max-width: 92%;
+      backdrop-filter: blur(10px);
     }
 
-    .hero-mobile-titles h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    .hero-mobile-tag {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.8;
       margin-bottom: 6px;
     }
 
-    .hero-mobile-titles p {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #f9fafb;
-      max-width: 320px;
-      margin: 0 auto;
+    .hero-mobile-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #bfdbfe;
     }
 
-    /* ======================= HERO – BANDA IZQUIERDA ======================= */
+    /* ======================= HERO – BANDA IZQUIERDA DESKTOP ======================= */
     .hero-side-band {
       position: absolute;
       top: 0;
@@ -221,7 +217,7 @@
         rgba(0, 0, 0, 0.9),
         rgba(0, 0, 0, 0.35)
       );
-      z-index: 3;  /* arriba del video y del overlay */
+      z-index: 3;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -296,7 +292,6 @@
       margin-top: 8px;
     }
 
-    /* BOTÓN OUTLINE PARA EL HERO */
     .btn-outline-light {
       display: inline-flex;
       align-items: center;
@@ -328,8 +323,8 @@
       width: 26%;
       max-width: 320px;
       background: radial-gradient(circle at top left,
-                  rgba(0, 0, 0, 0.80),
-                  rgba(0, 0, 0, 0.60));
+                  rgba(0, 0, 0, 0.85),
+                  rgba(0, 0, 0, 0.55));
       border-radius: 18px;
       padding: 14px 16px 12px;
       z-index: 3;
@@ -364,8 +359,7 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      /* velocidad del carrusel de marcas */
-      animation: brand-scroll 4s linear infinite;
+      animation: brand-scroll 10s linear infinite;
       will-change: transform;
     }
 
@@ -409,7 +403,6 @@
       z-index: 2;
     }
 
-    /* Card blanca con recuadro fino para el contenido */
     .section-inner {
       max-width: 1200px;
       margin: 0 auto;
@@ -887,7 +880,7 @@
       position: fixed;
       bottom: 22px;
       right: 22px;
-      width: 72px;   /* un poco más grande */
+      width: 72px;
       height: 72px;
       border-radius: 50%;
       background: #25d366;
@@ -900,7 +893,7 @@
     }
 
     .whatsapp-bubble svg {
-      width: 38px;   /* icono más grande y limpio */
+      width: 38px;
       height: 38px;
       fill: #ffffff;
       display: block;
@@ -948,12 +941,7 @@
       }
 
       .navbar-left {
-        position: static;
-        margin-right: 8px;
-      }
-
-      .navbar-brand {
-        font-size: 0.95rem;
+        display: block;
       }
 
       .navbar-links {
@@ -991,8 +979,8 @@
         display: none;
       }
 
-      /* títulos solo en mobile */
-      .hero-mobile-titles {
+      /* bubble visible en mobile */
+      .hero-mobile-bubble {
         display: block;
       }
 
@@ -1017,6 +1005,11 @@
         font-size: 1.6rem;
       }
 
+      /* un poco más de aire para que no se vea tan pegado */
+      #contacto .section-inner {
+        margin-top: 12px;
+      }
+
       .whatsapp-bubble {
         width: 68px;
         height: 68px;
@@ -1037,9 +1030,7 @@
   <!-- ======================= NAVBAR ======================= -->
   <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-left">
-        <span class="navbar-brand">Mauregui Automotores</span>
-      </div>
+      <div class="navbar-left">Mauregui Automotores</div>
 
       <ul class="navbar-links" id="navbarLinks">
         <li><a href="#nosotros">Nosotros</a></li>
@@ -1057,7 +1048,7 @@
     <video id="videoA" class="hero-video" autoplay muted playsinline></video>
     <video id="videoB" class="hero-video" autoplay muted playsinline></video>
 
-    <!-- BANDA IZQUIERDA CON LOGO Y TEXTO (desktop / tablet) -->
+    <!-- BANDA IZQUIERDA CON LOGO Y TEXTO (solo desktop/tablet) -->
     <div class="hero-side-band">
       <div class="hero-side-inner">
         <img src="mauregui-logo.png" alt="Mauregui Automotores">
@@ -1100,7 +1091,7 @@
           <div class="hero-brand-divider"></div>
           <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo">
 
-          <!-- Segunda vuelta (duplicada para scroll infinito suave) -->
+          <!-- Segunda vuelta duplicada para scroll infinito suave -->
           <div class="hero-brand-divider"></div>
           <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
           <div class="hero-brand-divider"></div>
@@ -1125,11 +1116,11 @@
 
     <div class="overlay"></div>
 
+    <!-- Bubble únicamente para mobile -->
     <div class="hero-content">
-      <!-- Títulos visibles solo en mobile -->
-      <div class="hero-mobile-titles">
-        <h1>Tu próximo auto, sin vueltas</h1>
-        <p>0 km y usados seleccionados en San Miguel del Monte, con financiación a medida.</p>
+      <div class="hero-mobile-bubble">
+        <p class="hero-mobile-tag">San Miguel del Monte · Buenos Aires</p>
+        <h1 class="hero-mobile-title">Tu próximo auto, sin vueltas</h1>
       </div>
     </div>
   </section>
@@ -1324,7 +1315,6 @@
           </div>
 
           <form class="contact-form" id="contactForm">
-            <!-- NUEVO CAMPO: NOMBRE DE LA PERSONA QUE CONTACTA -->
             <label for="nombre">Tu nombre</label>
             <input id="nombre" type="text" name="nombre" placeholder="Tu nombre y apellido">
 
@@ -1391,6 +1381,7 @@
     toggle.addEventListener("click", () => {
       const isVisible = links.style.display === "flex";
       links.style.display = isVisible ? "none" : "flex";
+      links.style.flexDirection = "column";
     });
 
     // ================== HERO ROTATIVO ==================
