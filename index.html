@@ -96,7 +96,17 @@
     }
 
     .navbar-left {
-      flex: 0;
+      position: absolute;
+      left: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 1.05rem;
+      white-space: nowrap;
     }
 
     .navbar-links {
@@ -174,6 +184,29 @@
     .hero-content p {
       font-size: 1.3rem;
       max-width: 640px;
+    }
+
+    /* Títulos visibles solo en mobile */
+    .hero-mobile-titles {
+      display: none;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .hero-mobile-titles h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      margin-bottom: 6px;
+    }
+
+    .hero-mobile-titles p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #f9fafb;
+      max-width: 320px;
+      margin: 0 auto;
     }
 
     /* ======================= HERO – BANDA IZQUIERDA ======================= */
@@ -331,8 +364,8 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      /* más rápido para que se vean todas las marcas */
-      animation: brand-scroll 4s linear infinite;
+      /* velocidad del carrusel de marcas */
+      animation: brand-scroll 8s linear infinite;
       will-change: transform;
     }
 
@@ -361,7 +394,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
       }
     }
 
@@ -915,7 +948,12 @@
       }
 
       .navbar-left {
-        display: none;
+        position: static;
+        margin-right: 8px;
+      }
+
+      .navbar-brand {
+        font-size: 0.95rem;
       }
 
       .navbar-links {
@@ -951,6 +989,11 @@
       /* en mobile la banda se oculta para que no tape el hero */
       .hero-side-band {
         display: none;
+      }
+
+      /* títulos solo en mobile */
+      .hero-mobile-titles {
+        display: block;
       }
 
       /* en mobile la caja de marcas baja y se centra */
@@ -994,7 +1037,9 @@
   <!-- ======================= NAVBAR ======================= -->
   <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-left"></div>
+      <div class="navbar-left">
+        <span class="navbar-brand">Mauregui Automotores</span>
+      </div>
 
       <ul class="navbar-links" id="navbarLinks">
         <li><a href="#nosotros">Nosotros</a></li>
@@ -1012,7 +1057,7 @@
     <video id="videoA" class="hero-video" autoplay muted playsinline></video>
     <video id="videoB" class="hero-video" autoplay muted playsinline></video>
 
-    <!-- BANDA IZQUIERDA CON LOGO Y TEXTO -->
+    <!-- BANDA IZQUIERDA CON LOGO Y TEXTO (desktop / tablet) -->
     <div class="hero-side-band">
       <div class="hero-side-inner">
         <img src="mauregui-logo.png" alt="Mauregui Automotores">
@@ -1081,7 +1126,11 @@
     <div class="overlay"></div>
 
     <div class="hero-content">
-      <!-- Opcional: textos centrales si en algún momento querés sumar algo sobre el video -->
+      <!-- Títulos visibles solo en mobile -->
+      <div class="hero-mobile-titles">
+        <h1>Tu próximo auto, sin vueltas</h1>
+        <p>0 km y usados seleccionados en San Miguel del Monte, con financiación a medida.</p>
+      </div>
     </div>
   </section>
 
