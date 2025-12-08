@@ -765,13 +765,14 @@
       resize: vertical;
     }
 
+    /* 🔧 Ajustado para que el texto nunca quede cortado */
     .contact-hero {
       position: relative;
       border-radius: 18px;
       overflow: hidden;
       margin-bottom: 32px;
-      height: 260px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      min-height: 220px; /* altura base, pero crece según el contenido */
     }
 
     .contact-hero-video {
@@ -796,11 +797,11 @@
       );
     }
 
+    /* 🔧 Quitamos height:100% para que el bloque crezca con el texto */
     .contact-hero-text {
       position: relative;
       z-index: 2;
       color: #ffffff;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -979,12 +980,18 @@
         text-align: center;
       }
 
+      /* 🔧 En mobile dejamos altura flexible también */
       .contact-hero {
-        height: 220px;
+        min-height: 220px;
+        margin-bottom: 24px;
       }
 
       .contact-hero-text h2 {
         font-size: 1.6rem;
+      }
+
+      .contact-hero-text p {
+        font-size: 0.9rem;
       }
 
       /* pequeño ajuste al padding interno del bloque de contacto */
