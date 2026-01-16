@@ -390,6 +390,8 @@
       padding: 60px 20px;
       position: relative;
       z-index: 2;
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 700px;
     }
 
     .section-inner {
@@ -1017,7 +1019,7 @@
 <body>
 
   <!-- ======================= VIDEO GLOBAL DE FONDO hero7.mp4 ======================= -->
-  <video class="bg-video" autoplay muted loop playsinline>
+  <video class="bg-video" autoplay muted loop playsinline preload="metadata">
     <source src="hero7.mp4" type="video/mp4">
   </video>
   <div class="bg-video-overlay"></div>
@@ -1041,13 +1043,13 @@
 
   <!-- ======================= HERO ROTATIVO CON FADE ======================= -->
   <section class="hero">
-    <video id="videoA" class="hero-video" autoplay muted playsinline></video>
-    <video id="videoB" class="hero-video" autoplay muted playsinline></video>
+    <video id="videoA" class="hero-video" autoplay muted playsinline preload="metadata"></video>
+    <video id="videoB" class="hero-video" autoplay muted playsinline preload="metadata"></video>
 
     <!-- BANDA IZQUIERDA CON LOGO Y TEXTO (solo desktop/tablet) -->
     <div class="hero-side-band">
       <div class="hero-side-inner">
-        <img src="mauregui-logo.png" alt="Mauregui Automotores">
+        <img src="mauregui-logo.png" alt="Mauregui Automotores" fetchpriority="high" decoding="async">
         <span class="hero-tag">San Miguel del Monte · Buenos Aires</span>
         <h1>Tu próximo auto, sin vueltas</h1>
         <p class="hero-lead">
@@ -1069,43 +1071,43 @@
       <div class="hero-brand-carousel">
         <div class="hero-brand-track">
           <!-- Primera vuelta -->
-          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
+          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo">
+          <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo">
+          <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-fiat.png" alt="Fiat" class="hero-brand-logo">
+          <img src="logo-fiat.png" alt="Fiat" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-kia.png" alt="Kia" class="hero-brand-logo">
+          <img src="logo-kia.png" alt="Kia" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-suzuki.png" alt="Suzuki" class="hero-brand-logo">
+          <img src="logo-suzuki.png" alt="Suzuki" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-citroen.png" alt="Citroën" class="hero-brand-logo">
+          <img src="logo-citroen.png" alt="Citroën" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-peugeot.png" alt="Peugeot" class="hero-brand-logo">
+          <img src="logo-peugeot.png" alt="Peugeot" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo">
+          <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo" decoding="async">
 
           <!-- Segunda vuelta duplicada -->
           <div class="hero-brand-divider"></div>
-          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo">
+          <img src="logo-ford.png" alt="Ford" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo">
+          <img src="logo-chevrolet.png" alt="Chevrolet" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo">
+          <img src="logo-volkswagen.png" alt="Volkswagen" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-fiat.png" alt="Fiat" class="hero-brand-logo">
+          <img src="logo-fiat.png" alt="Fiat" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-kia.png" alt="Kia" class="hero-brand-logo">
+          <img src="logo-kia.png" alt="Kia" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-suzuki.png" alt="Suzuki" class="hero-brand-logo">
+          <img src="logo-suzuki.png" alt="Suzuki" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-citroen.png" alt="Citroën" class="hero-brand-logo">
+          <img src="logo-citroen.png" alt="Citroën" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-peugeot.png" alt="Peugeot" class="hero-brand-logo">
+          <img src="logo-peugeot.png" alt="Peugeot" class="hero-brand-logo" decoding="async">
           <div class="hero-brand-divider"></div>
-          <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo">
+          <img src="logo-toyota.png" alt="Toyota" class="hero-brand-logo" decoding="async">
         </div>
       </div>
     </div>
@@ -1156,7 +1158,7 @@
           </div>
 
           <div class="nosotros-side">
-            <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img">
+            <img src="nosotros.png" alt="Nosotros - Mauregui Automotores" class="nosotros-img" loading="lazy" decoding="async">
 
             <div class="nosotros-box">
               <h3>¿Por qué elegirnos?</h3>
@@ -1183,31 +1185,31 @@
 
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-item">
-              <img src="destacado1.png" alt="Destacado 1">
+              <img src="destacado1.png" alt="Destacado 1" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
-              <img src="destacado2.png" alt="Destacado 2">
+              <img src="destacado2.png" alt="Destacado 2" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
-              <img src="destacado3.png" alt="Destacado 3">
+              <img src="destacado3.png" alt="Destacado 3" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
-              <img src="destacado4.png" alt="Destacado 4">
+              <img src="destacado4.png" alt="Destacado 4" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
-              <img src="destacado5.png" alt="Destacado 5">
+              <img src="destacado5.png" alt="Destacado 5" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
-              <img src="destacado6.png" alt="Destacado 6">
+              <img src="destacado6.png" alt="Destacado 6" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
             <div class="carousel-item">
-              <img src="destacado7.png" alt="Destacado 7">
+              <img src="destacado7.png" alt="Destacado 7" loading="lazy" decoding="async">
               <div class="carousel-caption">Unidad destacada</div>
             </div>
           </div>
@@ -1274,7 +1276,7 @@
       <div class="section-inner">
         <!-- MINI HERO CON hero6.mp4 -->
         <div class="contact-hero">
-          <video src="hero6.mp4" class="contact-hero-video" autoplay muted loop playsinline></video>
+          <video data-src="hero6.mp4" class="contact-hero-video" autoplay muted loop playsinline preload="none"></video>
           <div class="contact-hero-overlay"></div>
           <div class="contact-hero-text">
             <h2>¿Querés que te busquemos tu futuro auto?</h2>
@@ -1306,7 +1308,7 @@
 
             <!-- LOGO GRANDE DE MAUREGUI -->
             <div class="contact-logo-box">
-              <img src="mauregui-logo.png" alt="Mauregui Automotores">
+              <img src="mauregui-logo.png" alt="Mauregui Automotores" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -1349,7 +1351,7 @@
       <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
         Diseñado por UmanoAI
         <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
-          <img src="umanoai (1).png" alt="UmanoAI" style="height:18px;">
+          <img src="umanoai (1).png" alt="UmanoAI" style="height:18px;" loading="lazy" decoding="async">
         </a>
       </p>
     </div>
@@ -1508,6 +1510,39 @@
     });
 
     window.addEventListener('resize', updateFinanCarousel);
+
+    // ========== CARGA DIFERIDA DE VIDEO EN SECCIONES ==========
+    const lazyVideos = document.querySelectorAll('video[data-src]');
+
+    if ('IntersectionObserver' in window) {
+      const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const video = entry.target;
+          const src = video.dataset.src;
+          if (src) {
+            video.src = src;
+            video.load();
+            video.play().catch(() => {});
+            delete video.dataset.src;
+          }
+          observer.unobserve(video);
+        });
+      }, { rootMargin: '200px 0px' });
+
+      lazyVideos.forEach(video => lazyVideoObserver.observe(video));
+    } else {
+      lazyVideos.forEach(video => {
+        const src = video.dataset.src;
+        if (src) {
+          video.src = src;
+          video.load();
+          video.play().catch(() => {});
+          delete video.dataset.src;
+        }
+      });
+    }
 
     // ========== FORMULARIO "TU FUTURO AUTO" ==========
     const CONTACT_ENDPOINT = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f0637f326ee14691a60251bb3dd00978/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=7DaHMaLcyJtwzzX_Id0YN5TGMliWRBlLNBAuD9CFd6I";
