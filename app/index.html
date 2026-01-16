@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mauregui Automotores | App Interna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>App Interna · Mauregui Automotores</h1>
+        <p>Inventario, costos y gastos operativos.</p>
+      </div>
+      <button class="btn secondary" id="logoutBtn" type="button">Cerrar sesión</button>
+    </header>
+
+    <main>
+      <section class="card auth-card" id="loginSection">
+        <h2>Ingresar</h2>
+        <p>Acceso temporal mediante contraseña.</p>
+        <form id="loginForm">
+          <label>
+            Contraseña
+            <input type="password" id="loginPassword" required />
+          </label>
+          <button class="btn primary" type="submit">Entrar</button>
+          <p class="form-message" id="loginMessage"></p>
+        </form>
+      </section>
+
+      <section id="appSection" class="hidden">
+        <nav class="tab-nav">
+          <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+          <button class="tab-btn" data-tab="inventory">Inventario</button>
+          <button class="tab-btn" data-tab="expenses">Gastos</button>
+          <button class="tab-btn" data-tab="fixed">Costos fijos</button>
+        </nav>
+
+        <div class="tab-content active" id="tab-dashboard">
+          <div class="grid two">
+            <div class="card">
+              <h3>KPIs</h3>
+              <label>
+                Mes de costos fijos
+                <input type="month" id="dashboardMonth" />
+              </label>
+              <div class="kpi-list" id="kpiList"></div>
+            </div>
+            <div class="card">
+              <h3>Costo total por vehículo</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Patente</th>
+                      <th>Estado</th>
+                      <th>Costos totales</th>
+                      <th>Margen estimado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dashboardVehicleTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-inventory">
+          <div class="grid two">
+            <div class="card">
+              <h3>Alta / edición de vehículo</h3>
+              <form id="vehicleForm">
+                <input type="hidden" id="vehicleEditPlate" />
+                <label>
+                  Patente
+                  <input type="text" id="vehicleLicensePlate" maxlength="10" required />
+                </label>
+                <div class="grid two">
+                  <label>
+                    Marca
+                    <input type="text" id="vehicleBrand" required />
+                  </label>
+                  <label>
+                    Modelo
+                    <input type="text" id="vehicleModel" required />
+                  </label>
+                </div>
+                <div class="grid two">
+                  <label>
+                    Año
+                    <input type="number" id="vehicleYear" min="1900" max="2100" required />
+                  </label>
+                  <label>
+                    Costo de compra (ARS)
+                    <input type="number" id="vehiclePurchaseCost" min="0" step="0.01" />
+                  </label>
+                </div>
+                <div class="grid two">
+                  <label>
+                    Precio de venta (ARS)
+                    <input type="number" id="vehicleSalePrice" min="0" step="0.01" />
+                  </label>
+                  <label>
+                    Estado
+                    <select id="vehicleStatus" required>
+                      <option value="Salon">Salón</option>
+                      <option value="Reservado">Reservado</option>
+                      <option value="Vendido">Vendido</option>
+                    </select>
+                  </label>
+                </div>
+                <label id="vehicleSaleDateLabel" class="hidden">
+                  Fecha de venta
+                  <input type="date" id="vehicleSaleDate" />
+                </label>
+                <label>
+                  Observaciones
+                  <textarea id="vehicleNotes" rows="3"></textarea>
+                </label>
+                <label>
+                  Creado por
+                  <input type="text" id="vehicleCreatedBy" required />
+                </label>
+                <div class="form-actions">
+                  <button class="btn primary" type="submit">Guardar vehículo</button>
+                  <button class="btn secondary" type="button" id="vehicleResetBtn">Limpiar</button>
+                </div>
+                <p class="form-message" id="vehicleMessage"></p>
+              </form>
+            </div>
+            <div class="card">
+              <h3>Listado de vehículos</h3>
+              <div class="filters">
+                <input type="text" id="vehicleSearch" placeholder="Buscar patente, marca o modelo" />
+                <select id="vehicleStatusFilter">
+                  <option value="">Todos los estados</option>
+                  <option value="Salon">Salón</option>
+                  <option value="Reservado">Reservado</option>
+                  <option value="Vendido">Vendido</option>
+                </select>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Patente</th>
+                      <th>Modelo</th>
+                      <th>Estado</th>
+                      <th>Sync</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="vehicleTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="vehicleDetailCard">
+            <h3>Detalle del vehículo</h3>
+            <div id="vehicleDetail"></div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-expenses">
+          <div class="grid two">
+            <div class="card">
+              <h3>Registrar gasto</h3>
+              <form id="expenseForm">
+                <label>
+                  Patente
+                  <input list="vehicleList" id="expenseLicensePlate" required />
+                  <datalist id="vehicleList"></datalist>
+                </label>
+                <div class="grid two">
+                  <label>
+                    Fecha
+                    <input type="date" id="expenseDate" required />
+                  </label>
+                  <label>
+                    Categoría
+                    <select id="expenseCategory" required>
+                      <option value="Transferencia">Transferencia</option>
+                      <option value="Patentamiento">Patentamiento</option>
+                      <option value="Verificación policial">Verificación policial</option>
+                      <option value="Documentos / Gestoría">Documentos / Gestoría</option>
+                      <option value="Taller mecánico">Taller mecánico</option>
+                      <option value="Combustible">Combustible</option>
+                      <option value="Lavadero / Detailing">Lavadero / Detailing</option>
+                      <option value="Repuestos">Repuestos</option>
+                      <option value="Multas / Infracciones">Multas / Infracciones</option>
+                      <option value="Flete / Traslado">Flete / Traslado</option>
+                      <option value="Otros">Otros</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="grid two">
+                  <label>
+                    Importe (ARS)
+                    <input type="number" id="expenseAmount" min="0" step="0.01" required />
+                  </label>
+                  <label>
+                    Proveedor
+                    <input type="text" id="expenseProvider" />
+                  </label>
+                </div>
+                <div class="grid two">
+                  <label>
+                    Forma de pago
+                    <input type="text" id="expensePayment" />
+                  </label>
+                  <label>
+                    N° factura
+                    <input type="text" id="expenseInvoice" />
+                  </label>
+                </div>
+                <label>
+                  Observaciones
+                  <textarea id="expenseNotes" rows="3"></textarea>
+                </label>
+                <label>
+                  Creado por
+                  <input type="text" id="expenseCreatedBy" required />
+                </label>
+                <div class="form-actions">
+                  <button class="btn primary" type="submit">Guardar gasto</button>
+                  <button class="btn secondary" type="button" id="expenseResetBtn">Limpiar</button>
+                </div>
+                <p class="form-message" id="expenseMessage"></p>
+              </form>
+            </div>
+            <div class="card">
+              <h3>Gastos por vehículo</h3>
+              <div class="filters">
+                <input type="month" id="expenseMonthFilter" />
+                <select id="expenseCategoryFilter">
+                  <option value="">Todas las categorías</option>
+                </select>
+                <input type="text" id="expensePlateFilter" placeholder="Filtrar patente" />
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Patente</th>
+                      <th>Categoría</th>
+                      <th>Importe</th>
+                      <th>Sync</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="expenseTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-fixed">
+          <div class="grid two">
+            <div class="card">
+              <h3>Registrar costo fijo</h3>
+              <form id="fixedForm">
+                <label>
+                  Mes (YYYY-MM)
+                  <input type="month" id="fixedMonth" required />
+                </label>
+                <label>
+                  Categoría
+                  <select id="fixedCategory" required>
+                    <option value="Alquiler">Alquiler</option>
+                    <option value="Luz">Luz</option>
+                    <option value="Gas">Gas</option>
+                    <option value="Internet">Internet</option>
+                    <option value="Sueldos">Sueldos</option>
+                    <option value="Seguros">Seguros</option>
+                    <option value="Otros">Otros</option>
+                  </select>
+                </label>
+                <label>
+                  Importe (ARS)
+                  <input type="number" id="fixedAmount" min="0" step="0.01" required />
+                </label>
+                <label>
+                  Observaciones
+                  <textarea id="fixedNotes" rows="3"></textarea>
+                </label>
+                <label>
+                  Creado por
+                  <input type="text" id="fixedCreatedBy" required />
+                </label>
+                <div class="form-actions">
+                  <button class="btn primary" type="submit">Guardar costo fijo</button>
+                  <button class="btn secondary" type="button" id="fixedResetBtn">Limpiar</button>
+                </div>
+                <p class="form-message" id="fixedMessage"></p>
+              </form>
+            </div>
+            <div class="card">
+              <h3>Resumen mensual</h3>
+              <label>
+                Mes
+                <input type="month" id="fixedSummaryMonth" />
+              </label>
+              <div id="fixedSummary"></div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Mes</th>
+                      <th>Categoría</th>
+                      <th>Importe</th>
+                      <th>Sync</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="fixedTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="auth.js"></script>
+  <script src="storage.js"></script>
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
