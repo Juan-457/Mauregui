@@ -1,121 +1,64 @@
-# Mauregui Automotores · App interna (MVP)
+# Mauregui
 
-Esta carpeta contiene una app estática para gestionar inventario, gastos por vehículo y costos fijos con sincronización hacia SharePoint mediante Power Automate.
+Repositorio del sitio y app interna MVP de Mauregui Automotores.
 
-## Configuración rápida
+## Contenido
 
-1. Copiar `app/config.example.js` a `app/config.js` y completar:
-   - `PASSWORD` (acceso temporal).
-   - URLs de los webhooks de Power Automate.
-2. Abrir `index.html` o desplegar en GitHub Pages.
-3. Ingresar a `/app/` desde el botón **APP** del sitio principal.
+- `index.html`: sitio principal / landing de la marca.
+- `app/index.html`: acceso a la app interna.
+- `app/app.js`, `app/api.js`, `app/auth.js`, `app/storage.js`: logica del MVP.
+- `app/config.example.js`: plantilla de configuracion.
+- `app/config.js`: configuracion local de la app.
+- `CNAME`, `sitemap.xml`: configuracion de publicacion.
+- Videos e imagenes de marca en la raiz.
 
-## Estructura de datos en SharePoint Lists
+## Proposito de la app
 
-Crear tres listas en SharePoint:
+La app interna permite gestionar:
 
-### 1) Vehicles (Inventario)
-Campos sugeridos:
-- `Title` (texto) → usar para `licensePlate` (patente).
-- `brand` (texto)
-- `model` (texto)
-- `year` (número)
-- `purchaseCost` (número)
-- `salePrice` (número)
-- `status` (opciones: Salon, Reservado, Vendido)
-- `notes` (texto multilínea)
-- `createdBy` (texto)
-- `timestamp` (fecha/hora)
+- inventario de vehiculos
+- gastos por vehiculo
+- costos fijos
 
-### 2) VehicleExpenses (Gastos)
-Campos sugeridos:
-- `Title` (texto) → usar para `licensePlate`.
-- `date` (fecha)
-- `category` (opciones)
-- `amount` (número)
-- `provider` (texto)
-- `paymentMethod` (texto)
-- `invoiceNumber` (texto)
-- `notes` (texto multilínea)
-- `createdBy` (texto)
-- `timestamp` (fecha/hora)
+La sincronizacion operativa esta pensada hacia SharePoint mediante Power Automate.
 
-### 3) FixedCosts (Costos fijos)
-Campos sugeridos:
-- `Title` (texto) → usar para `month`.
-- `category` (opciones)
-- `amount` (número)
-- `notes` (texto multilínea)
-- `createdBy` (texto)
-- `timestamp` (fecha/hora)
+## Configuracion rapida
 
-## Power Automate: flujos sugeridos
+1. Copiar `app/config.example.js` a `app/config.js` si hace falta regenerar la configuracion.
+2. Completar password temporal y URLs de webhooks.
+3. Abrir `index.html` para el sitio o `app/index.html` para la app.
 
-Crear tres flujos (uno por lista) con estos pasos:
+## Integracion con SharePoint / Power Automate
 
-1. **Trigger:** When a HTTP request is received.
-2. **Schema JSON:** usar los objetos que se envían desde la app.
-3. **Action:** Create item (SharePoint).
-4. Mapear campos del JSON a columnas de la lista.
-5. Copiar la URL del webhook en `app/config.js`.
+La documentacion operativa original de este repo asume tres listas principales:
 
-### JSON esperado
+- `Vehicles`
+- `VehicleExpenses`
+- `FixedCosts`
 
-Vehículo:
-```json
-{
-  "type": "vehicle",
-  "licensePlate": "AA123BB",
-  "brand": "Ford",
-  "model": "Focus",
-  "year": 2021,
-  "purchaseCost": 12000000,
-  "salePrice": 14500000,
-  "status": "Salon",
-  "notes": "",
-  "createdBy": "Usuario",
-  "timestamp": "ISO8601"
-}
+Y tres flujos HTTP en Power Automate para crear items en esas listas a partir del JSON que envia la app.
+
+## Verlo localmente
+
+```bash
+cd Mauregui
+python3 -m http.server 8000
 ```
 
-Gasto de vehículo:
-```json
-{
-  "type": "vehicle_expense",
-  "licensePlate": "AA123BB",
-  "date": "YYYY-MM-DD",
-  "category": "Combustible",
-  "amount": 25000,
-  "provider": "",
-  "paymentMethod": "",
-  "invoiceNumber": "",
-  "notes": "",
-  "createdBy": "Usuario",
-  "timestamp": "ISO8601"
-}
-```
+Abrir:
 
-Costo fijo:
-```json
-{
-  "type": "fixed_cost",
-  "month": "YYYY-MM",
-  "category": "Alquiler",
-  "amount": 500000,
-  "notes": "",
-  "createdBy": "Usuario",
-  "timestamp": "ISO8601"
-}
-```
+- `http://localhost:8000/` para el sitio
+- `http://localhost:8000/app/` para la app
 
-## Despliegue en GitHub Pages
+## Deploy
 
-1. Subir este repositorio a GitHub.
-2. Settings → Pages → seleccionar la rama principal y carpeta raíz (`/`).
-3. Guardar. La app quedará disponible en `https://TU_USUARIO.github.io/TU_REPO/app/`.
+El proyecto se publica como sitio estatico. Mantener:
 
-## Notas funcionales
+- `CNAME`
+- la carpeta `app/` completa
+- los assets multimedia usados por el home
 
-- Los datos se guardan localmente (localStorage) y se envían al webhook.
-- Si un envío falla, el registro queda como **Pendiente** y se puede reintentar.
-- La validación de gastos para vehículos vendidos permite cargar gastos hasta fin del mes siguiente a la fecha de venta (configurable en el vehículo).
+## Notas
+
+- `app/config.js` puede contener configuracion sensible; revisar antes de compartir o publicar forks.
+- El README anterior incluia el detalle completo de listas y payloads; si se necesita volver a ese nivel de detalle, conviene documentarlo en un archivo tecnico separado.
