@@ -1,0 +1,37 @@
+# Mauregui Automotores — Agencia Multimarca de Autos
+
+Sitio oficial de Mauregui Automotores, agencia de vehículos 0 km y usados en Argentina.
+
+## Sitio principal
+- https://mauregui.com.ar/
+
+## Descripción breve
+Mauregui Automotores es una agencia multimarca con más de 15 años de experiencia en la compra y venta de vehículos 0 km y usados seleccionados. Ofrece atención personalizada, financiación a medida y acompañamiento en todo el proceso de compra, desde la elección del vehículo hasta la entrega final.
+
+## Servicios
+- Venta de autos 0 km
+- Venta de usados seleccionados
+- Financiación y créditos personalizados
+- Asesoramiento en compra y venta de vehículos
+- Gestión de documentación
+- Búsqueda personalizada del vehículo ideal
+
+## Propuesta de valor
+- Más de 15 años en el mercado
+- Atención personalizada y cercana
+- Transparencia en cada operación
+- Financiación accesible para cada etapa de vida
+
+## Público
+- Particulares que buscan comprar su primer auto
+- Personas que quieren cambiar su vehículo
+- Quienes buscan financiación para acceder a un auto
+
+## Idioma
+- Español (es-AR)
+
+## Contacto
+- Canal principal: WhatsApp y formulario desde el sitio web
+
+## Actualización
+- Consultar sitemap.xml para URLs canónicas y fecha de última modificación.
